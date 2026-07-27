@@ -44,11 +44,11 @@ regresión; escríbelos autocontenidos y reutilizables.)
 Reglas: si una sección no aplica, omítela. Si SPEC y DESIGN.md se contradicen, manda el SPEC;
 DESIGN.md se consulta para entender el porqué, no para reabrir.
 
-LONGITUD DEL DOCUMENTO: ajústala a lo que el trabajo pide — cubre la sustancia, sin secciones de
+LONGITUD DEL DOCUMENTO (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): ajústala a lo que el trabajo pide — cubre la sustancia, sin secciones de
 relleno, resúmenes redundantes ni boilerplate. Un SPEC no mejora por ser más largo; mejora por ser
 inequívoco.
 
-AL CERRAR LA FASE (higiene documental JCC v1.2): (1) registra el/los SPEC creados en el README del
+AL CERRAR LA FASE (higiene documental JCC): (1) registra el/los SPEC creados en el README del
 cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea
 "Fase actual" de CLAUDE.md con un puntero CORTO (cambio/ciclo · fase · siguiente command · enlaces
 al README y al último handoff · índice global) — nunca acumules historia ahí. No bloquees.

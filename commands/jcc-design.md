@@ -55,12 +55,15 @@ nuevo → DESIGN.md en la raíz; cambio sobre código existente → docs/cambios
 
 Si al entrevistar ves que en realidad son VARIOS cambios con DESIGN/SPEC propios, es un PROGRAMA:
 proponme estructurarlo como carpeta de programa (DESIGN transversal + README + `handoffs/` +
-subcarpetas `ciclo-N-<slug>/`), en vez de apilar varios DESIGN en plano.
+subcarpetas `ciclo-N-<slug>/`), en vez de apilar varios DESIGN en plano. Y si el DESIGN que vas a
+escribir sería el SEGUNDO de una carpeta plana ya existente, PÁRATE antes de escribirlo y proponme
+la promoción a programa en ese momento: ahora cuesta minutos; retroactivamente, con documentos
+acumulados, mover ficheros arriesga el rastro.
 
-LONGITUD DEL DOCUMENTO: ajústala a lo que el cambio pide — cubre la sustancia, sin secciones de
+LONGITUD DEL DOCUMENTO (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): ajústala a lo que el cambio pide — cubre la sustancia, sin secciones de
 relleno, resúmenes redundantes ni boilerplate. Un DESIGN no mejora por ser más largo.
 
-AL CERRAR LA FASE (higiene documental JCC v1.2): (1) registra el `DESIGN.md` creado en el README
+AL CERRAR LA FASE (higiene documental JCC): (1) registra el `DESIGN.md` creado en el README
 del cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la
 línea "Fase actual" de CLAUDE.md con un puntero CORTO (cambio/ciclo · fase · siguiente command ·
 enlaces al README y al último handoff · índice global) — nunca acumules historia ahí. No bloquees:

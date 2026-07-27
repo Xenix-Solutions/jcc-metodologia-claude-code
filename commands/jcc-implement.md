@@ -42,9 +42,10 @@ COHERENCIA SI LA REALIDAD CAMBIA EL DISEÑO: si al implementar surge un cambio s
 y es ESTRUCTURAL (modelo de datos, abstracciones, contratos, stack) o condiciona el futuro,
 NO lo absorbas: súbelo a la mesa común con tu recomendación. En todo caso, registra el cambio
 como ADDENDUM FECHADO en DESIGN.md y enmienda o crea el SPEC afectado, para que el rastro de
-auditoría no mienta. No implementes a espaldas del SPEC.
+auditoría no mienta. No implementes a espaldas del SPEC. El ADDENDUM registra la decisión y su
+porqué; la EVIDENCIA de ejecución va al handoff, no al DESIGN (la evidencia vive una sola vez).
 
-AL CERRAR LA FASE (higiene documental JCC v1.2): (1) si creaste documentos (p. ej. un RUNBOOK) o
+AL CERRAR LA FASE (higiene documental JCC): (1) si creaste documentos (p. ej. un RUNBOOK) o
 un ADDENDUM, regístralos/actualízalos en el README del cambio; (2) SOBRESCRIBE la línea "Fase
 actual" de CLAUDE.md con un puntero CORTO (cambio/ciclo · fase · siguiente command · enlaces al
 README y al último handoff · índice global) — nunca acumules historia ahí. No bloquees.
