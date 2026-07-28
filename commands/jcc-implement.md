@@ -35,8 +35,10 @@ Sigue el ciclo Explorar → Planificar → Codificar → Commit:
    la mesa. Si la zona no tenía tests, créalos.
 
 4. CIERRE: con la verificación en verde, actualiza CLAUDE.md si el trabajo alteró el contrato del
-   proyecto (nuevas dependencias, comandos, arquitectura). Luego commit con mensaje descriptivo
-   (inicializa git si el proyecto aún no lo está). PR si procede.
+   proyecto (nuevas dependencias, comandos, arquitectura). Al actualizarlo, recorre el fichero
+   COMPLETO y elimina o corrige lo que este cambio deja obsoleto — actualizar es también borrar:
+   dos verdades temporales conviviendo en CLAUDE.md envenenan todas las sesiones futuras. Luego
+   commit con mensaje descriptivo (inicializa git si el proyecto aún no lo está). PR si procede.
 
 COHERENCIA SI LA REALIDAD CAMBIA EL DISEÑO: si al implementar surge un cambio sobre lo diseñado
 y es ESTRUCTURAL (modelo de datos, abstracciones, contratos, stack) o condiciona el futuro,
@@ -46,6 +48,8 @@ auditoría no mienta. No implementes a espaldas del SPEC. El ADDENDUM registra l
 porqué; la EVIDENCIA de ejecución va al handoff, no al DESIGN (la evidencia vive una sola vez).
 
 AL CERRAR LA FASE (higiene documental JCC): (1) si creaste documentos (p. ej. un RUNBOOK) o
-un ADDENDUM, regístralos/actualízalos en el README del cambio; (2) SOBRESCRIBE la línea "Fase
-actual" de CLAUDE.md con un puntero CORTO (cambio/ciclo · fase · siguiente command · enlaces al
-README y al último handoff · índice global) — nunca acumules historia ahí. No bloquees.
+un ADDENDUM, regístralos/actualízalos en el README del cambio; (2) SOBRESCRIBE la línea "Fase actual" de
+CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
+README, al último handoff y al índice global); PROHIBIDO añadirle contenido nuevo: el detalle
+técnico vive en el código y sus documentos, los pendientes durables en el `### Backlog`, y lo
+demás espera a `/jcc-handoff`. No bloquees.

@@ -27,6 +27,12 @@ abstracciones, contratos, dependencias de peso), NO la decidas por tu cuenta: po
 mesa, recomiéndame una opción con su porqué, y decidimos juntos. Lo reversible y local,
 decídelo tú y menciónalo.
 
+ANCLAJE A LA REALIDAD: toda afirmación sobre el estado ACTUAL (qué hace el código hoy, qué
+permite la UI, qué hay en la BD o en la nube) que digas o escribas en el DESIGN debe estar
+comprobada en ESTA sesión con su evidencia (fichero:línea, comando, consulta), o escrita como
+SUPUESTO explícito. Ojo con la alcanzabilidad: que algo exista en el código no significa que el
+usuario llegue a ello.
+
 PASO 1 — Orientación (solo si hay código que respetar). Mira si ya existe código relacionado
 con esto. Si lo hay, oriéntate (lee CLAUDE.md si existe y estudia la zona afectada) y cuéntame
 cómo funciona HOY y qué podría romperse si lo toco (la superficie de regresión); espera a que
@@ -42,7 +48,9 @@ mejor diseño:
   fabriques complejidad donde no la hay. Si es grande, profundiza.
 - Si ves que en realidad son VARIOS cambios, dímelo y propón cómo trocearlos y en qué orden
   (esa descomposición guiará luego la granularidad de los specs).
-- No reabras lo ya decidido ni rediseñes lo que funciona.
+- No reabras lo ya decidido ni rediseñes lo que funciona. PERO si evidencia nueva contradice una
+  decisión previa, ni la reabras en silencio ni la obedezcas en silencio: ponla sobre la mesa con
+  la evidencia y tu recomendación, y decidimos.
 
 Cuando creas que lo tenemos, dímelo y pídeme el visto bueno antes de redactar.
 
@@ -64,7 +72,8 @@ LONGITUD DEL DOCUMENTO (calibración v1.2.1 para Opus 5; revisar al cambiar de m
 relleno, resúmenes redundantes ni boilerplate. Un DESIGN no mejora por ser más largo.
 
 AL CERRAR LA FASE (higiene documental JCC): (1) registra el `DESIGN.md` creado en el README
-del cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la
-línea "Fase actual" de CLAUDE.md con un puntero CORTO (cambio/ciclo · fase · siguiente command ·
-enlaces al README y al último handoff · índice global) — nunca acumules historia ahí. No bloquees:
-solo recuérdalo y ofrécelo.
+del cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea "Fase actual"
+de CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
+README, al último handoff y al índice global); PROHIBIDO añadirle contenido nuevo: el detalle
+técnico vive en el DESIGN que acabas de escribir, los pendientes durables en el `### Backlog`, y
+lo demás espera a `/jcc-handoff`. No bloquees: solo recuérdalo y ofrécelo.

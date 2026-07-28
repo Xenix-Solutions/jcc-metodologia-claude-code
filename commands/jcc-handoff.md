@@ -34,19 +34,24 @@ MODELO (tres hogares + índice global + backlog):
    hecho durable (cierres, veredictos de review, commits/deploys, gotchas, pendientes) que SOLO viva
    ahí, muévelo primero a su handoff o al README del cambio. Solo entonces recortes.
 
-3. SOBRESCRIBIR "Fase actual" en CLAUDE.md con un PUNTERO CORTO que contenga solo: cambio/ciclo
+3. BACKPORT DE CORRECCIONES. Recorre lo descubierto o corregido en esta sesión: si algo contradice
+   un documento vigente (un DESIGN, un SPEC, el propio CLAUDE.md), enmiéndalo AHÍ (ADDENDUM
+   fechado, o corrección directa si es el contrato de CLAUDE.md) antes de cerrar. Documentar una
+   corrección solo en otro sitio deja el rastro mintiendo.
+
+4. SOBRESCRIBIR "Fase actual" en CLAUDE.md con un PUNTERO CORTO que contenga solo: cambio/ciclo
    activo · fase · siguiente command · enlaces al README del cambio y a su último handoff · enlace
    al índice global docs/cambios/README.md. Si no queda trabajo activo, dilo ("ninguno; el siguiente
    arranca con /jcc-design o /jcc-spec"). NADA de cambios ya cerrados en esta línea. Si el proyecto
    no tiene aún el bloque JCC, propónmelo y créalo con mi visto bueno.
 
-4. ÍNDICES. Actualiza el README del cambio (documentos creados esta sesión) y el índice global
+5. ÍNDICES. Actualiza el README del cambio (documentos creados esta sesión) y el índice global
    docs/cambios/README.md (estado del cambio: activo/cerrado, Y el estado de merge/PR si lo hay —
    si el merge queda para después del cierre, el índice lo dice y la reconciliación de la próxima
    sesión lo pondrá al día). Créalos si no existen y el trabajo lo pide (programa, o cambio que ya
    pasa de ~4 documentos).
 
-5. BACKLOG, MEMORIA Y PENDIENTES. Los pendientes DURABLES (decidido no-ahora: endurecimientos,
+6. BACKLOG, MEMORIA Y PENDIENTES. Los pendientes DURABLES (decidido no-ahora: endurecimientos,
    deudas conscientes, decisiones diferidas) van al `### Backlog` de CLAUDE.md, una línea cada uno,
    PODANDO a la vez lo hecho o caducado (su historia ya vive en los handoffs); créalo si no existe
    y hay pendientes. Los pendientes de simple continuidad van al handoff, no al Backlog. Recuérdame

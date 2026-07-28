@@ -12,6 +12,16 @@ las ESTRUCTURALES o difíciles de revertir (modelo de datos, abstracciones, cont
 ponlas sobre la mesa con tu recomendación y deja que las confirme antes de escribir.
 AskUserQuestion solo para cerrar forks acotados.
 
+PREGUNTAS ABIERTAS DEL DESIGN: si el DESIGN deja preguntas abiertas que afectan a este SPEC,
+ciérralas PRIMERO contra la fuente primaria (documentación oficial, código, datos) o declara el
+SPEC bloqueado por ellas. No especifiques sobre una incógnita.
+
+ANCLAJE A LA REALIDAD: toda afirmación sobre el estado ACTUAL que escribas en el SPEC ("ya existe
+X", "la UI permite Y", "los datos están en Z", el catálogo de verificación) debe estar comprobada
+en ESTA sesión con su evidencia (fichero:línea, comando, consulta), o escrita como SUPUESTO
+explícito. Ojo con la alcanzabilidad: que algo exista en el código no significa que el usuario
+llegue a ello.
+
 GRANULARIDAD DEL SPEC (guía, no regla): la granularidad SIGUE LA DESCOMPOSICIÓN QUE EL DESIGN
 YA ENCONTRÓ. Si el DESIGN partió el trabajo en flujos/bloques, escribe varios specs
 (SPEC-01_<slug>.md, SPEC-02_…), cada uno autocontenido y trazado a su decisión de DESIGN. Si
@@ -42,13 +52,17 @@ escribe el/los SPEC (junto a su DESIGN.md) con:
 regresión; escríbelos autocontenidos y reutilizables.)
 
 Reglas: si una sección no aplica, omítela. Si SPEC y DESIGN.md se contradicen, manda el SPEC;
-DESIGN.md se consulta para entender el porqué, no para reabrir.
+DESIGN.md se consulta para entender el porqué, no para reabrir. PERO si evidencia nueva te dice
+que una decisión del DESIGN es errónea, ni la reabras en silencio ni la obedezcas en silencio:
+mesa común con la evidencia y tu recomendación (y ADDENDUM fechado en el DESIGN si se cambia).
 
 LONGITUD DEL DOCUMENTO (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): ajústala a lo que el trabajo pide — cubre la sustancia, sin secciones de
 relleno, resúmenes redundantes ni boilerplate. Un SPEC no mejora por ser más largo; mejora por ser
 inequívoco.
 
 AL CERRAR LA FASE (higiene documental JCC): (1) registra el/los SPEC creados en el README del
-cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea
-"Fase actual" de CLAUDE.md con un puntero CORTO (cambio/ciclo · fase · siguiente command · enlaces
-al README y al último handoff · índice global) — nunca acumules historia ahí. No bloquees.
+cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea "Fase actual" de
+CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
+README, al último handoff y al índice global); PROHIBIDO añadirle contenido nuevo: el detalle
+técnico vive en el/los SPEC que acabas de escribir, los pendientes durables en el `### Backlog`,
+y lo demás espera a `/jcc-handoff`. No bloquees.

@@ -1,6 +1,6 @@
 # JCC — Agentic Dev Methodology
 
-> **Versión:** v1.3 (2026-07-27)
+> **Versión:** v1.3.1 (2026-07-28)
 > **Tipo:** documento vivo y operativo — **"invoca y avanza"**.
 > **Para qué:** desarrollar con Claude Code (CC) un producto nuevo o un cambio sobre código existente, mediante un análisis conjunto que lleva al mejor diseño y luego lo ejecuta con control.
 > **Para quién:** cualquiera del equipo. No necesitas leerte la teoría; mira el gate, y si entras, recorre las fases invocando su command. CC mantiene la documentación al día para que cualquiera —tú, un compañero o una sesión nueva— sepa, leyendo un índice, qué hay y dónde.
@@ -92,7 +92,9 @@ https://raw.githubusercontent.com/Xenix-Solutions/jcc-metodologia-claude-code/ma
 - **Reconciliación al arrancar.** Contrasta la "Fase actual" con los artefactos reales del repo
   (¿qué SPEC existen?, ¿qué está implementado/verificado?). Si no cuadran, **dilo**. Si el índice
   global declara un merge/PR pendiente que ya ocurrió, **actualízalo**: el handoff es foto pre-merge;
-  el estado definitivo de merge vive en el índice global.
+  el estado definitivo de merge vive en el índice global. Canta también las **contradicciones
+  internas** de este CLAUDE.md (afirmaciones de épocas distintas que convivan) y el **trabajo
+  posterior al último handoff sin bitácora**.
 - **`### Backlog`** (sección aparte de este fichero; existe solo si hay pendientes durables): una
   línea por pendiente decidido no-ahora; **se poda** — lo hecho o caducado se borra (su historia ya
   vive en los handoffs).
@@ -261,6 +263,7 @@ En cada fase, además de su artefacto, CC **registra el documento creado en el R
 
 ## Estado del documento
 
+- **v1.3.1 (2026-07-28):** calibración **anti-deferencia**, tras una auditoría de integridad documental sobre un programa real (sesión independiente, evidencia citada) y un análisis externo de los commands. Diagnóstico unificado: Opus 5 difiere a la **autoridad externa** por encima de su juicio anclado en evidencia, en dos direcciones — obedece en silencio decisiones escritas que la evidencia contradice (las reglas anti-reapertura, sin válvula, eran raíles), y capitula ante la duda del usuario sin verificar (una "corrección" falsa llegó a escribirse en un SPEC). Cambios: (1) **válvula de escape** en `/jcc-design` y `/jcc-spec`: si evidencia nueva contradice una decisión previa, ni reabrirla en silencio ni obedecerla en silencio — mesa común con la evidencia; (2) **cierre de fase = solo puntero**: prohibido añadir contenido nuevo a "Fase actual" al cerrar design/spec/implement (el detalle va al artefacto recién creado, los durables al Backlog, el resto espera a `/jcc-handoff`) — mata el mecanismo real de inflación del puntero (cierres de fase sin handoff no daban destino a la información nueva); (3) **"actualizar es también borrar"** en `/jcc-implement`: al tocar CLAUDE.md se elimina lo que el cambio deja obsoleto (dos verdades temporales conviviendo envenenan todas las sesiones futuras); (4) **backport de correcciones** en `/jcc-handoff` (paso 3): lo descubierto que contradice un documento vigente se enmienda ahí antes de cerrar; (5) **cierre de preguntas abiertas** en `/jcc-spec` (fuente primaria o SPEC bloqueado); (6) **anclaje a la realidad** en `/jcc-design` y `/jcc-spec`: afirmaciones sobre el estado actual con evidencia de la sesión o como supuesto explícito (alcanzabilidad ≠ existencia); (7) **reconciliación ampliada** en el bloque JCC: contradicciones internas de CLAUDE.md y trabajo posterior al último handoff sin bitácora. Acompaña (fuera de este repo) un **CLAUDE.md global de usuario** (`~/.claude/CLAUDE.md`) con la regla de anclaje para toda sesión de Claude Code, incluidas las ad-hoc. Verificado contra la documentación oficial: `${CLAUDE_EFFORT}` es sustitución soportada en commands (low/medium/high/xhigh/max). Diferido de nuevo, conscientemente: desduplicar la higiene entre capas (primera candidata de v1.4 si el síntoma de sobre-adherencia persiste). Sin etiqueta de calibración: estos cambios completan el contrato de pares y la higiene (durables), no calibran un modelo concreto.
 - **v1.3 (2026-07-27):** cierra la cola acumulada de las adopciones v1.2 en el parque y del análisis de las guías de prompting de Opus 5/Fable 5. Núcleo intacto (fases, gate, contrato de pares); lo que cambia es la gestión documental y la mantenibilidad:
   - **Backlog canónico:** sección `### Backlog` en `CLAUDE.md`, **curada** (una línea por pendiente durable decidido no-ahora; se poda; la historia queda en los handoffs). Resuelve la divergencia observada en las adopciones: unos repos lo tenían en `CLAUDE.md`, otros en "pendientes heredados" del handoff.
   - **Estado de merge autoritativo en el índice global:** el handoff es foto pre-merge (el merge suele ocurrir tras cerrar la sesión) y no se reedita; el estado definitivo vive en `docs/cambios/README.md` y la reconciliación de apertura lo pone al día. Mata el "estado mentiroso" recurrente de PRs declarados abiertos ya mergeados.
