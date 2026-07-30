@@ -56,7 +56,7 @@ DESIGN.md se consulta para entender el porqué, no para reabrir. PERO si evidenc
 que una decisión del DESIGN es errónea, ni la reabras en silencio ni la obedezcas en silencio:
 mesa común con la evidencia y tu recomendación (y ADDENDUM fechado en el DESIGN si se cambia).
 
-LONGITUD DEL DOCUMENTO (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): ajústala a lo que el trabajo pide — cubre la sustancia, sin secciones de
+LONGITUD DEL DOCUMENTO (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): ajústala a lo que el trabajo pide — cubre la sustancia, sin secciones de
 relleno, resúmenes redundantes ni boilerplate. Un SPEC no mejora por ser más largo; mejora por ser
 inequívoco.
 

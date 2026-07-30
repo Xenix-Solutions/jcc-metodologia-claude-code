@@ -6,11 +6,9 @@ Esta fase implementa el trabajo ya especificado (Fase 3 de la metodología JCC).
 orden: CLAUDE.md (si existe, es el contrato del proyecto) y el/los SPEC (tu contrato para este
 trabajo). Puedes consultar DESIGN.md para el porqué, pero si el SPEC lo contradice, manda el SPEC.
 
-ANTES DE NADA (calibración v1.2.2 para Opus 5; revisar al cambiar de modelo), dime en una línea
-el effort activo (${CLAUDE_EFFORT}). La pauta vigente: sesión en `high`; la profundidad extra
-para lanzar la codificación la pone `ultrathink` en el turno de aprobación, no un cambio de
-effort — cambiarlo a mitad de sesión obliga a releer toda la conversación sin caché. Solo si esta
-fase arranca en sesión fresca dedicada, `xhigh` elegido al abrirla es alternativa válida. No
+ANTES DE NADA (calibración v1.3.2 para Opus 4.8; revisar al cambiar de modelo), dime en una línea
+el effort activo (${CLAUDE_EFFORT}). La pauta vigente: `xhigh` como estándar de sesión — no se
+cambia a mitad (obliga a releer toda la conversación sin caché; se elige al abrir). No
 bloquees: dilo y sigue.
 
 Sigue el ciclo Explorar → Planificar → Codificar → Commit:
@@ -20,19 +18,18 @@ Sigue el ciclo Explorar → Planificar → Codificar → Commit:
    desde el SPEC (stack, estructura, comandos de build/test/lint, reglas permanentes —entre
    ellas tests para la lógica no trivial— y el bloque JCC de metodología). Si hay código
    existente, el plan debe decir EXPLÍCITAMENTE cómo preserva lo listado en "Qué se PRESERVA".
-   Preséntame el plan y espera mi visto bueno. Al pedírmelo, si el cambio es multi-fichero o de
-   varias horas, recuérdame que mi mensaje de aprobación puede llevar `ultrathink`: da máxima
-   profundidad al turno que lanza la codificación sin tocar el effort ni la caché.
+   Preséntame el plan y espera mi visto bueno.
 
 2. CODIFICAR (tras mi aprobación): implementa siguiendo el plan y el SPEC. Si hay código
    existente, imita los patrones y convenciones que ya hay; no introduzcas un estilo nuevo. Si
    hay migración de datos, hazla idempotente (re-ejecutarla no duplica ni corrompe) y reversible
    si es posible.
 
-3. PUERTA DE VERIFICACIÓN: no declares nada "hecho" sin mostrarme evidencia REAL de que la
-   verificación del SPEC pasa y, si había código existente, de que la regresión sigue verde.
-   Cómo y cuándo verificar lo decides tú; lo que esta puerta exige es que la evidencia llegue a
-   la mesa. Si la zona no tenía tests, créalos.
+3. PUERTA DE VERIFICACIÓN (formulación activa — calibración v1.3.2 para Opus 4.8; con Opus 5
+   se reformula a solo-reporte, porque instruir la verificación le causa sobre-verificación):
+   ejecuta la verificación del SPEC y, si había código existente, la regresión; no declares
+   nada "hecho" sin mostrarme evidencia REAL de que ambas pasan. Si la zona no tenía tests,
+   créalos.
 
 4. CIERRE: con la verificación en verde, actualiza CLAUDE.md si el trabajo alteró el contrato del
    proyecto (nuevas dependencias, comandos, arquitectura). Al actualizarlo, recorre el fichero
@@ -50,6 +47,7 @@ porqué; la EVIDENCIA de ejecución va al handoff, no al DESIGN (la evidencia vi
 AL CERRAR LA FASE (higiene documental JCC): (1) si creaste documentos (p. ej. un RUNBOOK) o
 un ADDENDUM, regístralos/actualízalos en el README del cambio; (2) SOBRESCRIBE la línea "Fase actual" de
 CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
-README, al último handoff y al índice global); PROHIBIDO añadirle contenido nuevo: el detalle
-técnico vive en el código y sus documentos, los pendientes durables en el `### Backlog`, y lo
-demás espera a `/jcc-handoff`. No bloquees.
+README, al último handoff y al índice global); PROHIBIDO añadir contenido nuevo A ESTA LÍNEA
+(el resto de CLAUDE.md se actualiza según el paso 4): el detalle técnico vive en el código y sus
+documentos, los pendientes durables en el `### Backlog`, y lo demás espera a `/jcc-handoff`.
+No bloquees.

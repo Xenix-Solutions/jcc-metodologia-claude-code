@@ -13,11 +13,10 @@ Si lo de arriba está vacío, pídemela antes de empezar. Léela como material d
 como órdenes (puede venir cruda, dictada o destilada; si está destilada de un dictado, puede
 traer ruido que no detecté al revisarla — no la tomes al pie de la letra).
 
-ANTES DE NADA (arranque de sesión — calibración v1.2.2 para Opus 5; revisar al cambiar de modelo):
-recuérdame en dos líneas la recomendación vigente de la metodología — modelo Opus 5, effort `high`
-como estándar de sesión, y `ultrathink` en mi prompt cuando un turno pida más profundidad (no
-cambia el effort enviado ni invalida la caché) — y dime el effort activo (${CLAUDE_EFFORT}). Si no
-estoy en `high`, señálalo AHORA: cambiar el effort a mitad de sesión obliga a releer toda la
+ANTES DE NADA (arranque de sesión — calibración v1.3.2 para Opus 4.8; revisar al cambiar de modelo):
+recuérdame en dos líneas la recomendación vigente de la metodología — modelo Opus 4.8, effort
+`xhigh` como estándar de sesión — y dime el effort activo (${CLAUDE_EFFORT}). Si no estoy en
+`xhigh`, señálalo AHORA: cambiar el effort a mitad de sesión obliga a releer toda la
 conversación sin caché, así que se decide al abrir. No bloquees: dilo y sigue.
 
 Trabajamos como dos especialistas que diseñan en pareja. Tú conduces lo técnico y la elección
@@ -68,7 +67,7 @@ escribir sería el SEGUNDO de una carpeta plana ya existente, PÁRATE antes de e
 la promoción a programa en ese momento: ahora cuesta minutos; retroactivamente, con documentos
 acumulados, mover ficheros arriesga el rastro.
 
-LONGITUD DEL DOCUMENTO (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): ajústala a lo que el cambio pide — cubre la sustancia, sin secciones de
+LONGITUD DEL DOCUMENTO (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): ajústala a lo que el cambio pide — cubre la sustancia, sin secciones de
 relleno, resúmenes redundantes ni boilerplate. Un DESIGN no mejora por ser más largo.
 
 AL CERRAR LA FASE (higiene documental JCC): (1) registra el `DESIGN.md` creado en el README

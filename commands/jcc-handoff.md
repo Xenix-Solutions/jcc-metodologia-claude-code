@@ -3,13 +3,14 @@ description: "JCC Cierre de sesión — handoff fechado + índices al día + Fas
 ---
 
 Voy a cerrar esta sesión para abrir otra fresca (control de la ventana de contexto). Ejecuta el
-cierre de la metodología JCC (v1.3) ordenando los HOGARES. Hazlo con cuidado de NO perder
+cierre de la metodología JCC ordenando los HOGARES. Hazlo con cuidado de NO perder
 información.
 
 MODELO (tres hogares + índice global + backlog):
 - CLAUDE.md "Fase actual"  = estado vivo, CORTO, se SOBRESCRIBE (nunca acumula historia).
 - README del cambio        = mapa/índice de los documentos de ese cambio.
-- handoffs/HANDOFF-<fecha>  = fotos fechadas con evidencia (ahí vive la historia; la evidencia
+- HANDOFF(s) fechados       = fotos fechadas con evidencia; su UBICACIÓN la fija el paso 1 según
+  sea cambio plano o programa (ahí vive la historia; la evidencia
   vive UNA sola vez, aquí — DESIGN/README/índices enlazan, no duplican).
 - docs/cambios/README.md    = índice GLOBAL de todos los cambios; AUTORITATIVO para el estado
   de merge/PR (el handoff es foto pre-merge y no se reedita).
@@ -58,7 +59,7 @@ MODELO (tres hogares + índice global + backlog):
    actualizar tu memoria del proyecto y lo pendiente (commit/push, notas). Marca las decisiones
    tomadas "en caliente" al final para releerlas en frío.
 
-LONGITUD DEL HANDOFF (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): ajústala a lo que hubo en la sesión — cubre la sustancia y la evidencia, sin
+LONGITUD DEL HANDOFF (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): ajústala a lo que hubo en la sesión — cubre la sustancia y la evidencia, sin
 relleno ni resúmenes redundantes. Es una foto para poder retomar, no un informe.
 
 Antes de escribir, dime en una línea cuál crees que es la fase actual y por qué (contrastada con los

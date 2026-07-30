@@ -32,12 +32,12 @@ Entrega el informe en `REVIEW.md` (en la carpeta del cambio/ciclo; en un cambio 
 como sección del handoff): por cada hallazgo, qué falla, en qué fichero, gravedad, y si es
 regresión, incumplimiento del SPEC o bug. REPORTA TODO lo que encuentres, incluido aquello de lo
 que dudes o que consideres menor, añadiendo tu nivel de confianza; NO filtres por importancia,
-el filtro lo hago yo (calibración v1.2.1 para Opus 5 — un filtro de gravedad en el prompt reduce
-el recall; revisar al cambiar de modelo). Termina con un veredicto claro: ¿el trabajo cumple el
+el filtro lo hago yo (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2 — un filtro de
+gravedad en el prompt reduce el recall; revisar al cambiar de modelo). Termina con un veredicto claro: ¿el trabajo cumple el
 SPEC y no rompe nada, sí o no, y con qué huecos? Yo decido qué se corrige. Registra `REVIEW.md` en
 el README del cambio.
 
-LONGITUD DEL INFORME (calibración v1.2.1 para Opus 5; revisar al cambiar de modelo): cada
+LONGITUD DEL INFORME (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): cada
 hallazgo, breve y al grano; sin relleno ni boilerplate. Esto NO es
 licencia para omitir hallazgos: repórtalos todos, cada uno en pocas líneas.
 
