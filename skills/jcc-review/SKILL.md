@@ -1,5 +1,7 @@
 ---
+name: jcc-review
 description: "JCC Fase 4 — Revisión adversarial INDEPENDIENTE: refutar que cumple y no rompe"
+disable-model-invocation: true
 ---
 
 Esta es una revisión adversarial e INDEPENDIENTE (Fase 4 de la metodología JCC): la hace quien
@@ -37,9 +39,10 @@ gravedad en el prompt reduce el recall; revisar al cambiar de modelo). Termina c
 SPEC y no rompe nada, sí o no, y con qué huecos? Yo decido qué se corrige. Registra `REVIEW.md` en
 el README del cambio.
 
-LONGITUD DEL INFORME (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): cada
-hallazgo, breve y al grano; sin relleno ni boilerplate. Esto NO es
-licencia para omitir hallazgos: repórtalos todos, cada uno en pocas líneas.
+LONGITUD DEL INFORME (calibración v1.4 para Opus 4.8; revisar al cambiar de modelo): cada
+hallazgo, breve y al grano — recorta relleno, no conectivas ni contexto: el hallazgo tiene que
+entenderse de corrido sin descifrar telegramas. Esto NO es licencia para omitir hallazgos:
+repórtalos todos, cada uno en pocas líneas.
 
 BUCLE DE CIERRE: los hallazgos vuelven a la Fase 3 (`/jcc-implement`) y se re-verifica. Itera
 3↔4 hasta veredicto limpio.

@@ -1,5 +1,7 @@
 ---
+name: jcc-implement
 description: "JCC Fase 3 — Implementación: construir según el SPEC (Explorar→Planificar→Codificar→Commit)"
+disable-model-invocation: true
 ---
 
 Esta fase implementa el trabajo ya especificado (Fase 3 de la metodología JCC). Lee, en este
@@ -47,7 +49,9 @@ porqué; la EVIDENCIA de ejecución va al handoff, no al DESIGN (la evidencia vi
 AL CERRAR LA FASE (higiene documental JCC): (1) si creaste documentos (p. ej. un RUNBOOK) o
 un ADDENDUM, regístralos/actualízalos en el README del cambio; (2) SOBRESCRIBE la línea "Fase actual" de
 CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
-README, al último handoff y al índice global); PROHIBIDO añadir contenido nuevo A ESTA LÍNEA
+README, al último handoff y al índice global — los que existan; no fabriques documentos solo para
+enlazarlos); PROHIBIDO añadir contenido nuevo A ESTA LÍNEA
 (el resto de CLAUDE.md se actualiza según el paso 4): el detalle técnico vive en el código y sus
 documentos, los pendientes durables en el `### Backlog`, y lo demás espera a `/jcc-handoff`.
-No bloquees.
+Esta higiene se EJECUTA, no se ofrece; lo que NO bloqueas es el avance de fase: ofréceme el
+command siguiente y la decisión de avanzar es mía.

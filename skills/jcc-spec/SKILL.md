@@ -1,5 +1,7 @@
 ---
+name: jcc-spec
 description: "JCC Fase 2 — Especificación: DESIGN.md → SPEC.md autocontenido"
+disable-model-invocation: true
 ---
 
 Esta fase convierte el diseño en una especificación técnica (Fase 2 de la metodología JCC).
@@ -56,13 +58,16 @@ DESIGN.md se consulta para entender el porqué, no para reabrir. PERO si evidenc
 que una decisión del DESIGN es errónea, ni la reabras en silencio ni la obedezcas en silencio:
 mesa común con la evidencia y tu recomendación (y ADDENDUM fechado en el DESIGN si se cambia).
 
-LONGITUD DEL DOCUMENTO (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): ajústala a lo que el trabajo pide — cubre la sustancia, sin secciones de
-relleno, resúmenes redundantes ni boilerplate. Un SPEC no mejora por ser más largo; mejora por ser
-inequívoco.
+LONGITUD DEL DOCUMENTO (calibración v1.4 para Opus 4.8; revisar al cambiar de modelo): recorta
+RELLENO (secciones vacías, resúmenes redundantes, boilerplate), NO conectivas ni contexto. El
+criterio es la RELECTURA HUMANA — que quien lo lea semanas después lo entienda de corrido —,
+no la brevedad. Un SPEC no mejora por ser más largo ni más corto; mejora por ser inequívoco.
 
 AL CERRAR LA FASE (higiene documental JCC): (1) registra el/los SPEC creados en el README del
 cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea "Fase actual" de
 CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
-README, al último handoff y al índice global); PROHIBIDO añadirle contenido nuevo: el detalle
+README, al último handoff y al índice global — los que existan; no fabriques documentos solo para
+enlazarlos); PROHIBIDO añadirle contenido nuevo: el detalle
 técnico vive en el/los SPEC que acabas de escribir, los pendientes durables en el `### Backlog`,
-y lo demás espera a `/jcc-handoff`. No bloquees.
+y lo demás espera a `/jcc-handoff`. Esta higiene se EJECUTA, no se ofrece; lo que NO bloqueas es
+el avance de fase: ofréceme el command siguiente y la decisión de avanzar es mía.

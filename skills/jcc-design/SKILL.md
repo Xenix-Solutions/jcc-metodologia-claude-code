@@ -1,6 +1,8 @@
 ---
+name: jcc-design
 description: "JCC Fase 1 — Análisis: entrevista socrática entre pares → DESIGN.md"
 argument-hint: "[tu descripción del cambio o producto, en cualquier forma]"
+disable-model-invocation: true
 ---
 
 Quiero trabajar en un cambio o producto y necesito que lo analicemos JUNTOS antes de tocar
@@ -67,12 +69,17 @@ escribir sería el SEGUNDO de una carpeta plana ya existente, PÁRATE antes de e
 la promoción a programa en ese momento: ahora cuesta minutos; retroactivamente, con documentos
 acumulados, mover ficheros arriesga el rastro.
 
-LONGITUD DEL DOCUMENTO (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): ajústala a lo que el cambio pide — cubre la sustancia, sin secciones de
-relleno, resúmenes redundantes ni boilerplate. Un DESIGN no mejora por ser más largo.
+LONGITUD DEL DOCUMENTO (calibración v1.4 para Opus 4.8; revisar al cambiar de modelo): recorta
+RELLENO (secciones vacías, resúmenes redundantes, boilerplate), NO conectivas ni contexto. El
+criterio es la RELECTURA HUMANA — que quien lo lea semanas después lo entienda de corrido —,
+no la brevedad: una frase tan densa que hay que descifrarla es tan cara como un párrafo de paja.
+Un DESIGN no mejora por ser más largo, ni por ser más corto.
 
 AL CERRAR LA FASE (higiene documental JCC): (1) registra el `DESIGN.md` creado en el README
 del cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea "Fase actual"
 de CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
-README, al último handoff y al índice global); PROHIBIDO añadirle contenido nuevo: el detalle
+README, al último handoff y al índice global — los que existan; no fabriques documentos solo para
+enlazarlos); PROHIBIDO añadirle contenido nuevo: el detalle
 técnico vive en el DESIGN que acabas de escribir, los pendientes durables en el `### Backlog`, y
-lo demás espera a `/jcc-handoff`. No bloquees: solo recuérdalo y ofrécelo.
+lo demás espera a `/jcc-handoff`. Esta higiene se EJECUTA, no se ofrece; lo que NO bloqueas es el
+avance de fase: ofréceme el command siguiente y la decisión de avanzar es mía.

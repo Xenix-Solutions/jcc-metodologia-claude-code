@@ -1,5 +1,7 @@
 ---
+name: jcc-handoff
 description: "JCC Cierre de sesión — handoff fechado + índices al día + Fase actual como puntero corto + recordar memoria"
+disable-model-invocation: true
 ---
 
 Voy a cerrar esta sesión para abrir otra fresca (control de la ventana de contexto). Ejecuta el
@@ -36,13 +38,16 @@ MODELO (tres hogares + índice global + backlog):
    ahí, muévelo primero a su handoff o al README del cambio. Solo entonces recortes.
 
 3. BACKPORT DE CORRECCIONES. Recorre lo descubierto o corregido en esta sesión: si algo contradice
-   un documento vigente (un DESIGN, un SPEC, el propio CLAUDE.md), enmiéndalo AHÍ (ADDENDUM
-   fechado, o corrección directa si es el contrato de CLAUDE.md) antes de cerrar. Documentar una
-   corrección solo en otro sitio deja el rastro mintiendo.
+   la documentación vigente, haz el BARRIDO COMPLETO — enmienda TODOS los documentos vigentes que
+   la corrección contradiga (DESIGNs, SPECs, READMEs, el propio CLAUDE.md), no solo el primero que
+   encuentres (ADDENDUM fechado, o corrección directa si es el contrato de CLAUDE.md), antes de
+   cerrar. Un backport parcial deja dos verdades temporales conviviendo, y una sesión futura
+   obedecerá al documento equivocado.
 
 4. SOBRESCRIBIR "Fase actual" en CLAUDE.md con un PUNTERO CORTO que contenga solo: cambio/ciclo
    activo · fase · siguiente command · enlaces al README del cambio y a su último handoff · enlace
-   al índice global docs/cambios/README.md. Si no queda trabajo activo, dilo ("ninguno; el siguiente
+   al índice global docs/cambios/README.md (enlaza los que existan; no fabriques documentos solo
+   para enlazarlos). Si no queda trabajo activo, dilo ("ninguno; el siguiente
    arranca con /jcc-design o /jcc-spec"). NADA de cambios ya cerrados en esta línea. Si el proyecto
    no tiene aún el bloque JCC, propónmelo y créalo con mi visto bueno.
 
@@ -56,11 +61,20 @@ MODELO (tres hogares + índice global + backlog):
    deudas conscientes, decisiones diferidas) van al `### Backlog` de CLAUDE.md, una línea cada uno,
    PODANDO a la vez lo hecho o caducado (su historia ya vive en los handoffs); créalo si no existe
    y hay pendientes. Los pendientes de simple continuidad van al handoff, no al Backlog. Recuérdame
-   actualizar tu memoria del proyecto y lo pendiente (commit/push, notas). Marca las decisiones
-   tomadas "en caliente" al final para releerlas en frío.
+   actualizar tu memoria del proyecto y lo pendiente (commit/push, notas). En la memoria del
+   proyecto, deja (si no está ya) el apunte-RECETA de arranque — una receta estática, no una foto
+   del estado: "al arrancar, sigue los punteros: índice global → README del cambio activo → último
+   handoff, y contrasta con git log". Una foto caduca si una sesión muere sin handoff; la receta
+   no. Marca las decisiones tomadas "en caliente" al final para releerlas en frío.
 
-LONGITUD DEL HANDOFF (calibración v1.2.1, revalidada para Opus 4.8 en v1.3.2; revisar al cambiar de modelo): ajústala a lo que hubo en la sesión — cubre la sustancia y la evidencia, sin
-relleno ni resúmenes redundantes. Es una foto para poder retomar, no un informe.
+ESTE HANDOFF ES LA INSTRUCCIÓN DE ARRANQUE de la siguiente sesión — no generes prompts de
+arranque aparte: la sesión siguiente arranca con el command de su fase y la reconciliación de
+apertura lee el resto.
+
+LONGITUD DEL HANDOFF (calibración v1.4 para Opus 4.8; revisar al cambiar de modelo): cubre la
+sustancia y la evidencia recortando RELLENO, no conectivas ni contexto. El criterio es la
+RELECTURA HUMANA: quien retome (humano o sesión) tiene que entenderlo de corrido, sin descifrar
+telegramas. Es una foto para poder retomar, no un informe — ni un acertijo.
 
 Antes de escribir, dime en una línea cuál crees que es la fase actual y por qué (contrastada con los
 artefactos del repo), para que lo confirme. Si el estado real no cuadra con lo que declaraba
