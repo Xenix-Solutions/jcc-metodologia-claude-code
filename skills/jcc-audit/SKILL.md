@@ -16,8 +16,8 @@ vacío):
 
 $ARGUMENTS
 
-Si viene vacío: audita el/los work items ACTIVOS (los que apuntan las líneas de "Fase actual";
-si hay varias, todos). "Proyecto entero"
+Si viene vacío: audita el/los work items ACTIVOS (los que apuntan las sub-viñetas de "Fase
+actual"; si hay varias, todos). "Proyecto entero"
 solo si se pide con esas palabras. La capa 3 solo corre si se pidió explícitamente.
 
 RESULTADO: un informe con TODOS los hallazgos (cada uno con `fichero:línea`, capa, gravedad y
@@ -43,8 +43,9 @@ epic | feature | analysis; dentro de un Epic: `feature-NN_<slug>/`; ficheros fec
 en la cabecera del índice global — informativo); nombres que empiezan por letra en la raíz de `jccdocs/` que no sean estructura
 declarada (`README.md`, `regression/`, `audits/`, `ARCHIVE.md`); documentación metodológica fuera
 de `jccdocs/` (en `docs/`, en la raíz) o utillaje ejecutable dentro; portada de raíz que duplica el
-mapa; formato de la "Fase actual" (N sub-viñetas = N work items activos, cada una un puntero
-corto; cualquier otra cosa es historia acumulada); línea de versión
+mapa; formato de la "Fase actual" (recuento de la línea padre = N sub-viñetas = N work items
+activos, cada una un puntero corto; con cero, "ninguno; …"; cualquier otra cosa es historia
+acumulada); línea de versión
 del bloque JCC ausente o anterior a la de la skill instalada. Los work items CERRADOS con nombre
 de un esquema anterior NO son hallazgo (solo lo activo se renombra): lístalos aparte como
 informativo.

@@ -17,11 +17,11 @@ quiero es leer. Cuando SÉ a qué vengo, no necesito start: entro directo por el
 que ya reconcilia al abrir. Start es para el día 0, la vuelta tras días, la sesión sin command
 claro y los primeros usos de un compañero.
 
-VERSIÓN DEL CANON QUE CONOCE ESTE COMMAND: **v1.5.2** (la compara con la línea `Bloque JCC vX.Y[.Z]`
+VERSIÓN DEL CANON QUE CONOCE ESTE COMMAND: **v1.5.3** (la compara con la línea `Bloque JCC vX.Y[.Z]`
 del CLAUDE.md del proyecto; comparación local, sin red).
 
 PASO 1 — DETECCIÓN DE ESTADO (solo lectura). Mira `CLAUDE.md` (¿existe? ¿tiene la sección
-`## Metodología (JCC)`? ¿qué dice su línea `Bloque JCC vX.Y`?), `jccdocs/` (¿existe? ¿tiene
+`## Metodología (JCC)`? ¿qué dice su línea `Bloque JCC vX.Y[.Z]`?), `jccdocs/` (¿existe? ¿tiene
 `README.md`?), `git status`/`git log` (¿hay repo? ¿hay historia?). Cuatro casos:
 
 - **VIRGEN** — no hay bloque JCC ni `jccdocs/` → PASO 2 (bootstrap día-0). Si hay código y no
@@ -34,11 +34,12 @@ PASO 1 — DETECCIÓN DE ESTADO (solo lectura). Mira `CLAUDE.md` (¿existe? ¿ti
   de fase escriben donde el proyecto YA escribe (su contenedor y esquema actuales), nunca abren un
   `jccdocs/` paralelo; y la doctrina declarada en el CLAUDE.md del proyecto gana al texto de los
   skills. Sigue al PASO 3 con lo que hay.
-- **AL DÍA** — bloque v1.5.2 y `jccdocs/` con su README → PASO 3. (Un bloque `v1.5` a secas es
-  DESFASADO: su plantilla no tiene lectura acotada, política de push ni el formato de "Fase
-  actual" por work item; `/jcc-upgrade` "solo bloque" lo resuelve en minutos.)
+- **AL DÍA** — bloque v1.5.3 y `jccdocs/` con su README → PASO 3. (Un bloque `v1.5` o `v1.5.2` es
+  DESFASADO: al primero le faltan lectura acotada, política de push y el formato de "Fase actual"
+  por work item; al segundo, el recuento de la línea padre; `/jcc-upgrade` "solo bloque" lo
+  resuelve en minutos.)
 - **INCONSISTENTE** — cualquier combinación que no encaje arriba: `jccdocs/` sin bloque JCC;
-  bloque v1.5.2 sin `jccdocs/README.md`; bloque con versión MAYOR que la de este command (tu kit
+  bloque v1.5.3 sin `jccdocs/README.md`; bloque con versión MAYOR que la de este command (tu kit
   está viejo: recomiéndame actualizarlo con `install.ps1` desde el repo de la metodología antes de
   tocar nada). Dilo tal cual, di qué falta o sobra, y ofrece `/jcc-upgrade` o `/jcc-start` según
   el caso; no lo arregles tú.
@@ -55,7 +56,7 @@ visto bueno, o libre? ¿el repo despliega en push? (f) ¿lee este proyecto rutas
    comprimidos `*.zip *.7z *.iso` solo si me confirmas que no son entregables ni fixtures), basura
    de SO/editor, secretos (`.env`, `*.local.json`) y lo propio del stack. Un vídeo de reunión de
    100 MB en la historia de git obliga a reescribirla; ya pasó.
-2. `CLAUDE.md` con el bloque JCC v1.5.2 de abajo (edición dirigida si el fichero ya existe: añade la
+2. `CLAUDE.md` con el bloque JCC v1.5.3 de abajo (edición dirigida si el fichero ya existe: añade la
    sección, no reescribas el resto) + la sección `## Reglas operativas (INVIOLABLES)` con las
    respuestas de (c), (e) y (f): conectores MCP, lectura acotada y política de push SIEMPRE; la
    confidencialidad en dos niveles, con el remoto privado nombrado, si es de cliente.
@@ -64,7 +65,7 @@ visto bueno, o libre? ¿el repo despliega en push? (f) ¿lee este proyecto rutas
    el operador o entregables sueltos").
 4. `README.md` en la raíz como PORTADA MÍNIMA (qué es + enlaces a `jccdocs/README.md` y
    `CLAUDE.md`); si ya existe, añádele solo los enlaces. Portada ≠ mapa: no dupliques el índice.
-5. `git init` si no hay repo, y el primer commit ("bootstrap JCC v1.5.2") con mi visto bueno. Sin
+5. `git init` si no hay repo, y el primer commit ("bootstrap JCC v1.5.3") con mi visto bueno. Sin
    push: aplica la política que acabas de escribir en Reglas operativas. Si el repo despliega en
    push, propón además el checkpoint `permissions.ask` para `git push` y `gh pr create` en
    `.claude/settings.json` (el compartido por git, no `settings.local.json`) y escríbelo con mi
@@ -82,7 +83,8 @@ PASO 4 — MENÚ DE COPILOTO (el cierre de este command). Recomiéndame el sigui
 instrucción de arranque LISTA PARA PEGAR: la barra al INICIO del mensaje y el contexto detrás
 (la instrucción de arranque ES el comando). Con cada opción, recuérdame modelo y effort de la
 tabla "Perfil por fase" del command que ofreces (hoy: todas las sesiones `claude-fable-5-1`
-`high`; la review, subagente `jcc-review` en `claude-opus-5` `high`). Contenido del menú:
+`high`; la review, subagente `jcc-review` en `claude-opus-5` `high`; copia del perfil vigente,
+calibración v1.5 — si la tabla cambia, cambia esta línea). Contenido del menú:
 - El **siguiente command natural** según la "Fase actual" (p. ej. `/jcc-spec <ruta al DESIGN>`).
 - **Bifurcaciones según lo que traigo**: solo quiero leer o ponerme al día → `/jcc-query`; tengo
   una pregunta de QUÉ hacer o dudo de si seguimos bien → `/jcc-analysis <tema>`; traigo un encargo
@@ -94,24 +96,26 @@ Recomienda; yo disparo. PROHIBIDO: avanzar fases, tocar la "Fase actual", auto-l
 
 ---
 
-PLANTILLA DEL BLOQUE JCC v1.5.2 (copia instalada de la plantilla del doc de metodología; si
+PLANTILLA DEL BLOQUE JCC v1.5.3 (copia instalada de la plantilla del doc de metodología; si
 difieren, manda el doc):
 
 ```markdown
 ## Metodología (JCC)
 
-- **Bloque JCC v1.5.2** (esta línea la reescribe `/jcc-upgrade`; no la edites a mano). Este proyecto se
+- **Bloque JCC v1.5.3** (esta línea la reescribe `/jcc-upgrade`; no la edites a mano). Este proyecto se
   desarrolla con la metodología JCC. Doc (URL estable, consultable en sesión):
   https://raw.githubusercontent.com/Xenix-Solutions/jcc-metodologia-claude-code/main/docs/JCC_Metodologia.md
 - **Fase actual:** ninguno; el siguiente arranca con `/jcc-design`, `/jcc-analysis` o `/jcc-start`.
-  <cuando haya trabajo activo, UNA SUB-VIÑETA POR WORK ITEM ACTIVO bajo esta línea — lo normal es
-  una —, cada una un puntero CORTO: work item · fase (Design / Spec / Implementation / Review) ·
-  siguiente command con la barra al inicio · enlace al README del work item y a su último handoff
-  · enlace al índice global `jccdocs/README.md`. Cada sub-viñeta se SOBRESCRIBE en su transición y
-  se borra al cerrar su work item; con cero activos queda solo la línea "ninguno; …" de arriba;
-  NUNCA acumula historia (N sub-viñetas = N activos; cualquier otra cosa es historia mal puesta).
-  En equipo el puntero viaja con la rama: al resolver el conflicto del merge, conserva las
-  sub-viñetas de ambas. Este texto entre <> se borra al escribir el primer puntero.>
+  <cuando haya trabajo activo, esta línea padre pasa a decir `**Fase actual:** N activo(s)` y debajo
+  va UNA SUB-VIÑETA POR WORK ITEM ACTIVO — lo normal es una —, cada una un puntero CORTO: work
+  item · fase (Design / Spec / Implementation / Review) · siguiente command con la barra al inicio
+  · enlace al README del work item y a su último handoff · enlace al índice global
+  `jccdocs/README.md`. Cada sub-viñeta se SOBRESCRIBE en su transición y se borra al cerrar su
+  work item, actualizando el recuento; con cero activos la línea padre vuelve a "ninguno; …";
+  NUNCA acumula historia (recuento = N sub-viñetas = N activos; cualquier otra cosa es historia
+  mal puesta). En equipo el puntero viaja con la rama: al resolver el conflicto del merge,
+  conserva las sub-viñetas de ambas y suma el recuento. Este texto entre <> se borra al escribir
+  el primer puntero.>
 - **Arranque: reconstruye antes de opinar.** Si tu tarea toca el trabajo en curso — aunque sea
   una sesión suelta, sin command JCC —, sigue los punteros ANTES de afirmar nada sobre el
   estado: índice global `jccdocs/README.md` → README del work item activo → su último handoff,

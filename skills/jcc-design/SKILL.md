@@ -113,7 +113,8 @@ si el work item es nuevo Y cuelga de la raíz de `jccdocs/` (una `feature-NN_` d
 tabla del README del Epic, no al índice global), añade su fila al índice global
 `jccdocs/README.md`; (2) SOBRESCRIBE la
 sub-viñeta de ESTE work item en "Fase actual" de CLAUDE.md (una por work item activo; las de los
-demás no se tocan; si es el primer puntero, borra el placeholder entre <>) — SOLO los campos del
+demás no se tocan; si es el primer puntero, borra el placeholder entre <> y sustituye el "ninguno;
+…" de la línea padre por el recuento `N activo(s)`; si el work item es nuevo, suma uno) — SOLO los campos del
 puntero (work item · fase · siguiente
 command · enlaces al README, al último handoff y al índice global — los que existan; no fabriques
 documentos solo para enlazarlos); edítala con EDICIÓN DIRIGIDA — toca solo esa sección, no

@@ -17,7 +17,8 @@ operador, no tuyo.
 
 INDEPENDENCIA Y PERFIL: esta fase corre en sesión fresca o como subagente — y si es subagente,
 con la definición de agente del kit (`jcc-review`: `claude-opus-5`, `high`, otra familia que la
-sesión implementadora; la diversidad de revisor es el argumento). Un subagente sin definición
+sesión implementadora; la diversidad de revisor es el argumento; copia del perfil vigente,
+calibración v1.5 — si la tabla cambia, cambia esta línea). Un subagente sin definición
 HEREDA el effort de la sesión padre, así que no lo lances sin ella. Dime modelo y effort activos
 y contrástalos con la tabla "Perfil por fase" (Review = `claude-opus-5`, `high`, en subagente o
 en sesión aparte; copia del perfil vigente, calibración v1.5 — si la tabla cambia, cambia esta

@@ -27,7 +27,7 @@ El script copia cada `skills/<nombre>/SKILL.md` a `~/.claude/skills/` y `agents/
 - **Perfil por fase como fuente única de modelo y effort:** hoy Fable 5.1 `high` en las sesiones y Opus 5 `high` como revisor, que corre como subagente con la definición de agente `agents/jcc-review.md` (otra familia de modelo que quien implementó: la diversidad de revisor es el argumento). Cada command de fase lleva una copia etiquetada del perfil de su fase y la verifica al arrancar; la tabla es la fuente y un cambio en ella arrastra las copias.
 - **CC copiloto:** conoce el marco vía un bloque fino en el `CLAUDE.md` del proyecto (plantilla en el documento; la escribe `/jcc-start`), avisa en las transiciones de fase y ofrece el command que toca; nunca bloquea — el usuario decide.
 - **Los tres hogares (+ índice global), todos bajo `jccdocs/`** para que la documentación no se degrade:
-  - **estado vivo** → línea *"Fase actual"* de `CLAUDE.md` (corta, se sobrescribe; una por work item activo);
+  - **estado vivo** → *"Fase actual"* de `CLAUDE.md` (una sub-viñeta corta por work item activo; se sobrescribe);
   - **mapa** → `README.md` de cada work item (Epic, Feature o Analysis);
   - **historia con evidencia** → los `HANDOFF_yyyymmdd_<slug>.md` de cada work item (en un Epic, `handoffs/`);
   - **puerta de entrada** → `jccdocs/README.md` (índice global de work items del proyecto).
@@ -42,7 +42,7 @@ https://raw.githubusercontent.com/Xenix-Solutions/jcc-metodologia-claude-code/ma
 
 ## Versionado
 
-- La **versión** vive dentro del documento, no en el nombre del fichero. El bloque JCC de cada proyecto lleva su propia línea de versión (`Bloque JCC vX.Y`); `/jcc-start` la compara con la del kit instalado y `/jcc-upgrade` la migra.
+- La **versión** vive dentro del documento, no en el nombre del fichero. El bloque JCC de cada proyecto lleva su propia línea de versión (`Bloque JCC vX.Y[.Z]`; la de la plantilla del bloque, que sube en cada patch que la toque); `/jcc-start` la compara con la del kit instalado y `/jcc-upgrade` la migra.
 - Los **patches** (p. ej. `v1.5 → v1.5.1`) son ajustes que no tocan el núcleo (fases, hogares, gate, contrato de pares, estructura) y se registran en la sección *Estado del documento*.
 - Las instrucciones de las skills atadas a un modelo concreto van etiquetadas como **calibración perecedera** (`calibración vX.Y para <modelo>; revisar al cambiar de modelo`): son lo primero que se audita en cada transición de modelo.
 

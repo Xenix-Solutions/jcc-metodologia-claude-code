@@ -15,8 +15,9 @@ o en "Fase actual". Lo que NO hace el cierre: no avanza fases, no reedita fotos 
 genera prompts de arranque aparte.
 
 MODELO (tres hogares + índice global + backlog):
-- CLAUDE.md "Fase actual"  = estado vivo, CORTO, se SOBRESCRIBE (nunca acumula historia).
-- README del work item     = mapa/índice de los documentos de ese Feature o Epic.
+- CLAUDE.md "Fase actual"  = estado vivo: una sub-viñeta CORTA por work item activo (la línea
+  padre lleva el recuento); cada una se SOBRESCRIBE (nunca acumula historia).
+- README del work item     = mapa/índice de los documentos de ese Feature, Epic o Analysis standalone.
 - HANDOFF(s) fechados       = fotos fechadas con evidencia; su UBICACIÓN la fija el paso 1 según
   sea Feature o Epic (ahí vive la historia; la evidencia vive UNA sola vez, aquí — DESIGN/README/
   índices enlazan, no duplican).
@@ -35,6 +36,9 @@ MODELO (tres hogares + índice global + backlog):
      promoción a Epic se quedan en su `feature-NN_`, son fotos; están listados como aceptados en la
      cabecera del índice global). **Analysis standalone** → en su carpeta
      `yyyymmdd_analysis_<slug>/`. Los handoffs existentes con nombres anteriores no se renombran.
+     En un proyecto SIN MIGRAR (documentación fuera de `jccdocs/`), el HANDOFF va en la carpeta que
+     el proyecto ya usa para ese work item, con el nombre canónico `HANDOFF_yyyymmdd_<slug>.md`:
+     las fotos anteriores conservan el suyo y `/jcc-upgrade` no las renombrará.
      El `<slug>` del handoff es el TEMA de la sesión, no el de la carpeta; dos cierres el mismo
      día llevan slugs distintos.
    - Contenido: cabecera **"Estado metodológico"** (fase actual · siguiente command · restricciones
@@ -75,8 +79,9 @@ MODELO (tres hogares + índice global + backlog):
    instrucción de arranque ES el comando: `/jcc-<fase>` y el contexto detrás, en el mismo
    mensaje) · enlaces al README del work item y a su último handoff · enlace al índice global
    `jccdocs/README.md` (enlaza los que existan; no fabriques documentos solo para enlazarlos). Si
-   este cierre CIERRA el work item, borra solo su sub-viñeta; si era la última, deja la línea
-   "ninguno; el siguiente arranca con `/jcc-design`, `/jcc-analysis` o `/jcc-start`". NADA de
+   este cierre CIERRA el work item, borra solo su sub-viñeta y resta uno al recuento de la línea
+   padre (`**Fase actual:** N activo(s)`); si era la última, la línea padre vuelve a "ninguno; el
+   siguiente arranca con `/jcc-design`, `/jcc-analysis` o `/jcc-start`". NADA de
    trabajos ya cerrados en "Fase actual". Si el proyecto no tiene aún el bloque JCC, o lo tiene de
    una versión anterior, dilo y ofréceme `/jcc-start` / `/jcc-upgrade` para la próxima apertura
    (o créalo ahora con la plantilla del doc, con mi visto bueno).
@@ -84,7 +89,8 @@ MODELO (tres hogares + índice global + backlog):
 5. ÍNDICES. Actualiza el README del work item (documentos creados esta sesión) y el índice global
    `jccdocs/README.md`: columna Estado (activo | cerrado; CERRADO = veredicto limpio registrado
    en un REVIEW y merge/PR resuelto, o decisión mía explícita anotada en este handoff — si es por
-   decisión, la fila cita el handoff) y columna Merge/PR con valor cerrado (`—` sin PR previsto ·
+   decisión, la fila cita el handoff; para un Analysis standalone, cerrado = bifurcación tomada y
+   registrada en `ANALYSIS.md`) y columna Merge/PR con valor cerrado (`—` sin PR previsto ·
    `PR #n abierto` · `mergeado yyyy-mm-dd` · `commit directo`); si el merge queda para después
    del cierre, el índice lo dice y la reconciliación de la próxima sesión lo pondrá al día.
    Créalos si no existen: el README del work item es obligatorio desde que hay un HANDOFF (regla

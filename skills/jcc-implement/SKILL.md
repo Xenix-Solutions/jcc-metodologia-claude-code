@@ -84,7 +84,8 @@ código y sus documentos, los pendientes durables en el `### Backlog`, y lo dem�
 `/jcc-handoff`. Lo que NO bloqueas es el avance de fase: la decisión de avanzar es mía. La
 siguiente fase es SIEMPRE la Review, una por pasada de implementación: ofréceme lanzarla como
 subagente con la definición de agente del kit (`jcc-review`: `claude-opus-5`, `high`, otra
-familia que esta sesión; nunca un fork) o, si quiero verla en directo, abrir sesión aparte con
+familia que esta sesión; nunca un fork; copia del perfil vigente, calibración v1.5 — si la tabla
+cambia, cambia esta línea) o, si quiero verla en directo, abrir sesión aparte con
 `/jcc-review` al inicio del mensaje y el contexto detrás: la instrucción de arranque ES el
 comando.
 
