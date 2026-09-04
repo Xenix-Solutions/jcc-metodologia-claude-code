@@ -1,13 +1,24 @@
 ---
 name: jcc-spec
-description: "JCC Fase 2 — Especificación: DESIGN.md → SPEC.md autocontenido"
+description: "JCC Fase 2 — Spec: DESIGN.md → SPEC.md autocontenido (SPEC ≈ PBI)"
+argument-hint: "[opcional: ruta al DESIGN.md del work item]"
 disable-model-invocation: true
 ---
 
-Esta fase convierte el diseño en una especificación técnica (Fase 2 de la metodología JCC).
-Lee DESIGN.md de este trabajo: es tu fuente de verdad (si sigues en la misma sesión, queda
-subordinada a él). Objetivo: un SPEC autocontenido, con detalle suficiente para implementar
-sin releer la conversación de diseño.
+Esta fase convierte el diseño en una especificación técnica (Fase 2, Spec, de la metodología JCC).
+
+RESULTADO DE ESTA FASE: uno o varios SPEC autocontenidos, con detalle suficiente para implementar
+sin releer la conversación de diseño ni este chat. Tiene que valer por sí solo: la siguiente fase
+puede abrirse en sesión fresca y con otro modelo, así que todo lo que Implementation necesite
+debe estar en el artefacto. Lo que NO hace esta fase: no implementa, no reabre lo decidido en el
+DESIGN (salvo evidencia nueva, abajo), no avanza de fase por su cuenta.
+
+Antes de nada, dime en una línea modelo y effort activos (el effort lo inyecta el sistema:
+`${CLAUDE_EFFORT}`) y contrástalos con la tabla "Perfil por fase" (Spec = sesión,
+`claude-fable-5-1`, `high`); si no coinciden, señálalo y sigue.
+
+Lee DESIGN.md de este work item (si el mensaje trae una ruta detrás del command, es ese): es tu fuente de verdad (si sigues en la misma sesión que el
+diseño, la conversación queda subordinada a él).
 
 Mantén el reparto de pares: las decisiones técnicas reversibles las tomas y las documentas;
 las ESTRUCTURALES o difíciles de revertir (modelo de datos, abstracciones, contratos, stack)
@@ -28,7 +39,9 @@ GRANULARIDAD DEL SPEC (guía, no regla): la granularidad SIGUE LA DESCOMPOSICIÓ
 YA ENCONTRÓ. Si el DESIGN partió el trabajo en flujos/bloques, escribe varios specs
 (SPEC-01_<slug>.md, SPEC-02_…), cada uno autocontenido y trazado a su decisión de DESIGN. Si
 es algo indivisible, un solo SPEC.md. No fuerces ni "siempre modular" ni "siempre monolítico":
-lo dicta el análisis.
+lo dicta el análisis. Un SPEC ≈ un PBI: van PLANOS junto al DESIGN, sin subcarpeta. Si la carpeta
+se llena de SPEC hasta volverse ilegible, eso pide la promoción a Epic que `/jcc-design` sabe
+proponer, no una subcarpeta.
 
 Adapta el spec a si hay código que respetar:
 - PRODUCTO NUEVO (nada que preservar): elige stack y arquitectura respetando las restricciones
@@ -58,16 +71,21 @@ DESIGN.md se consulta para entender el porqué, no para reabrir. PERO si evidenc
 que una decisión del DESIGN es errónea, ni la reabras en silencio ni la obedezcas en silencio:
 mesa común con la evidencia y tu recomendación (y ADDENDUM fechado en el DESIGN si se cambia).
 
-LONGITUD DEL DOCUMENTO (calibración v1.4 para Opus 4.8; revisar al cambiar de modelo): recorta
+LONGITUD DEL DOCUMENTO (calibración v1.5 para Fable 5.1, revalidada — contrarresta su prosa densa documentada; revisar al cambiar de modelo): recorta
 RELLENO (secciones vacías, resúmenes redundantes, boilerplate), NO conectivas ni contexto. El
 criterio es la RELECTURA HUMANA — que quien lo lea semanas después lo entienda de corrido —,
 no la brevedad. Un SPEC no mejora por ser más largo ni más corto; mejora por ser inequívoco.
 
-AL CERRAR LA FASE (higiene documental JCC): (1) registra el/los SPEC creados en el README del
-cambio (créalo si es un programa o si el cambio ya pasa de ~4 documentos); (2) SOBRESCRIBE la línea "Fase actual" de
-CLAUDE.md — SOLO los campos del puntero (cambio/ciclo · fase · siguiente command · enlaces al
-README, al último handoff y al índice global — los que existan; no fabriques documentos solo para
-enlazarlos); PROHIBIDO añadirle contenido nuevo: el detalle
-técnico vive en el/los SPEC que acabas de escribir, los pendientes durables en el `### Backlog`,
-y lo demás espera a `/jcc-handoff`. Esta higiene se EJECUTA, no se ofrece; lo que NO bloqueas es
-el avance de fase: ofréceme el command siguiente y la decisión de avanzar es mía.
+AL CERRAR LA FASE (higiene documental JCC; se EJECUTA, no se ofrece): (1) registra el/los SPEC
+creados en el README del work item (créalo si es un Epic o si el work item ya pasa de ~4
+documentos); (2) SOBRESCRIBE la línea "Fase actual" de CLAUDE.md — SOLO los campos del puntero
+(work item · fase · siguiente command · enlaces al README, al último handoff y al índice global
+`jccdocs/README.md` — los que existan; no fabriques documentos solo para enlazarlos); edítala con
+EDICIÓN DIRIGIDA — toca solo esa sección, no reescribas CLAUDE.md entero (calibración v1.5 para
+Fable 5.1 — tiende a reescribir ficheros completos; revisar al cambiar de modelo); PROHIBIDO
+añadirle contenido nuevo: el detalle técnico vive en el/los SPEC que acabas de escribir, los
+pendientes durables en el `### Backlog`, y lo demás espera a `/jcc-handoff`. Lo que NO bloqueas
+es el avance de fase: la decisión de avanzar es mía. Ofréceme el siguiente paso como instrucción
+de arranque lista para pegar — la barra al INICIO del mensaje y el contexto detrás, en el mismo
+mensaje (p. ej. `/jcc-implement <ruta al SPEC>`): la instrucción de arranque ES el comando.
+Recuerda que Implementation puede abrirse en sesión fresca.
