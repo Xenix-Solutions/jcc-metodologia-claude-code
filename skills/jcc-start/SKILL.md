@@ -17,8 +17,10 @@ quiero es leer. Cuando SÉ a qué vengo, no necesito start: entro directo por el
 que ya reconcilia al abrir. Start es para el día 0, la vuelta tras días, la sesión sin command
 claro y los primeros usos de un compañero.
 
-VERSIÓN DEL CANON QUE CONOCE ESTE COMMAND: **v1.5.3** (la compara con la línea `Bloque JCC vX.Y[.Z]`
-del CLAUDE.md del proyecto; comparación local, sin red).
+VERSIÓN DE LA PLANTILLA DEL BLOQUE JCC QUE LLEVA ESTE COMMAND: **v1.5.3** (la compara con la línea
+`Bloque JCC vX.Y[.Z]` del CLAUDE.md del proyecto; comparación local, sin red). NO es la versión del
+doc de metodología: el doc puede ir por delante en patches que no tocan la plantilla, y eso no es
+desfase ni del proyecto ni del kit.
 
 PASO 1 — DETECCIÓN DE ESTADO (solo lectura). Mira `CLAUDE.md` (¿existe? ¿tiene la sección
 `## Metodología (JCC)`? ¿qué dice su línea `Bloque JCC vX.Y[.Z]`?), `jccdocs/` (¿existe? ¿tiene
@@ -88,8 +90,9 @@ calibración v1.5 — si la tabla cambia, cambia esta línea). Contenido del men
 - El **siguiente command natural** según la "Fase actual" (p. ej. `/jcc-spec <ruta al DESIGN>`).
 - **Bifurcaciones según lo que traigo**: solo quiero leer o ponerme al día → `/jcc-query`; tengo
   una pregunta de QUÉ hacer o dudo de si seguimos bien → `/jcc-analysis <tema>`; traigo un encargo
-  claro → `/jcc-design <encargo>`; sospecho de la documentación → `/jcc-audit`; vengo a cerrar →
-  `/jcc-handoff`; el bloque está desfasado → `/jcc-upgrade`.
+  claro → `/jcc-design <encargo>`; sospecho de la documentación → `/jcc-audit` (en una sesión
+  APARTE si esta ya escribió algo: el audit no audita lo que su propia sesión escribió); vengo a
+  cerrar → `/jcc-handoff`; el bloque está desfasado → `/jcc-upgrade`.
 - Si lo que traigo en el argumento ya lo dice ("quiero diseñar X", "ponme al día"), enruta directo:
   una sola recomendación, sin menú entero.
 Recomienda; yo disparo. PROHIBIDO: avanzar fases, tocar la "Fase actual", auto-lanzar commands.
@@ -188,9 +191,11 @@ global*; si difieren, manda el doc):
 Jerarquía de hogares: estado vivo en `../CLAUDE.md` ("Fase actual") · este índice = todos los work
 items · cada work item tiene su `README.md` (mapa) y sus `HANDOFF_` (historia con evidencia).
 Naming: `yyyymmdd_<epic|feature|analysis>_<slug>/`; dentro de un Epic, `feature-NN_<slug>/` (sin
-fila aquí: van a la tabla del README del Epic). Estado: activo | cerrado (cerrado = veredicto
-limpio + merge/PR resuelto, o decisión del operador anotada en el handoff). Merge/PR: `—` ·
-`PR #n abierto` · `mergeado yyyy-mm-dd` · `commit directo`.
+fila aquí: van a la tabla del README del Epic). Tipo: `Epic` | `Feature` | `Analysis` | `Audit`
+(mayúscula inicial, como la ontología; la minúscula es solo del nombre de carpeta). Estado: activo |
+cerrado (cerrado = veredicto limpio + merge/PR resuelto, o decisión del operador anotada en el
+handoff). Merge/PR, exactamente uno de estos valores, sin coletillas: `—` · `PR #n abierto` ·
+`mergeado yyyy-mm-dd` · `commit directo`.
 
 | Fecha | Tipo | Slug | Qué es | Estado | Merge/PR | Enlaces |
 |---|---|---|---|---|---|---|

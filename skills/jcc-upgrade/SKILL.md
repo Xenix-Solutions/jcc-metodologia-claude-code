@@ -12,10 +12,11 @@ concreto. Alcance pedido (puede venir vacío):
 
 $ARGUMENTS
 
-VERSIÓN DEL CANON QUE APLICA ESTE COMMAND: **v1.5.3** (esquema `jccdocs/`, ontología Epic /
-Feature / Analysis, naming `yyyymmdd_<tipo>_<slug>/`, bloque JCC v1.5.3 cuya plantilla lleva
-`/jcc-start`: léela en `~/.claude/skills/jcc-start/SKILL.md`; es copia de la del doc de metodología y,
-si difieren, manda el doc). Comparación local, sin red.
+VERSIÓN DE LA PLANTILLA DEL BLOQUE JCC QUE APLICA ESTE COMMAND: **v1.5.3** (esquema `jccdocs/`,
+ontología Epic / Feature / Analysis, naming `yyyymmdd_<tipo>_<slug>/`, bloque JCC v1.5.3 cuya
+plantilla lleva `/jcc-start`: léela en `~/.claude/skills/jcc-start/SKILL.md`; es copia de la del doc
+de metodología y, si difieren, manda el doc). Comparación local, sin red. NO es la versión del doc:
+el doc puede ir por delante en patches que no tocan la plantilla, y eso no es desfase de nadie.
 
 RESULTADO: el proyecto en canon v1.5.3 — bloque JCC v1.5.3 en `CLAUDE.md`, documentación metodológica
 bajo `jccdocs/` con la geometría interna intacta, work items ACTIVOS con nombre canónico, punteros
@@ -85,8 +86,9 @@ calibración v1.5 — si la tabla cambia, cambia esta línea); si no coinciden, 
      fechas de despliegue) → se retira, porque ya vive en el índice global y en los handoffs.
    - QUÉ SE CREA si falta: la sección `## Reglas operativas (INVIOLABLES)` (pregúntame las
      respuestas: conectores MCP, rutas externas, política de push, ¿cliente?), `jccdocs/README.md`
-     (mapa, con la columna Merge/PR; si el proyecto no tenía índice global, constrúyelo desde los
-     work items reales), portada mínima, `anexos/` en la raíz del repo, hermano de `jccdocs/`, nunca
+     (mapa, con la columna Merge/PR con exactamente uno de sus valores, sin coletillas, y Tipo en
+     mayúscula inicial: `Epic` | `Feature` | `Analysis` | `Audit`; si el proyecto no tenía índice
+     global, constrúyelo desde los work items reales), portada mínima, `anexos/` en la raíz del repo, hermano de `jccdocs/`, nunca
      dentro (con lo que salga de `docs/` que no sea metodología, con mi visto bueno pieza a pieza),
      `.gitignore` de medios.
    - LO AMBIGUO (¿esto se relee o se ejecuta?, ¿este cambio está activo o cerrado?, ¿este
@@ -102,14 +104,20 @@ calibración v1.5 — si la tabla cambia, cambia esta línea); si no coinciden, 
    (HANDOFF, REVIEW, BRIEF, AUDIT) hacia lo renombrado quedan rotos por diseño — las fotos no se
    editan —: lístalos en el informe y en la cabecera de `jccdocs/README.md` como "rotos
    aceptados" (con el nombre nuevo al lado), para que `jcc-audit` los trate como informativo.
+   ENLACES ENTRANTES desde repos hermanos: si `CLAUDE.md` (Reglas operativas o cualquier otra
+   sección) declara rutas externas `../<repo>`, haz un `grep` de la ruta vieja de este contenedor
+   (p. ej. `<este-repo>/docs/cambios/`) en esos repos; lo que encuentres lo listas en el informe
+   como "enlaces entrantes que rompe esta migración", con la ruta nueva al lado, para corregirlos
+   desde la sesión de ese repo — NO los edites tú: es otro repo y otro commit.
    Comprueba que `git status` solo muestra
    renombrados y los ficheros previstos; que la línea `Bloque JCC v1.5.3` está. Un commit propio
    ("jcc-upgrade: migración a JCC v1.5.3 — <qué se movió>"). SIN push: recuérdame la política de
    push del proyecto y déjalo en mis manos. Añade en la cabecera de `jccdocs/README.md` una línea
    "Migrado a JCC v1.5.3 el yyyy-mm-dd con `/jcc-upgrade`". Repórtame: qué se movió, qué se
    renombró, qué NO se tocó y por qué, y recomiéndame `/jcc-audit` (capa 1) como comprobación
-   independiente si la migración fue grande. Si llevo un censo del parque, recuérdame actualizar
-   su fila.
+   independiente si la migración fue grande — EN UNA SESIÓN NUEVA, nunca en esta: `jcc-audit`
+   rechaza auditar lo que su propia sesión escribió, y esta sesión acaba de escribir el bloque, el
+   índice y los repuntes. Si llevo un censo del parque, recuérdame actualizar su fila.
 
 CASOS QUE YA CONOCEMOS: proyecto que era un único programa suelto en la raíz de `jccdocs/`
 (DESIGN transversal + `handoffs/` + `ciclo-N/`) → se mete entero en `jccdocs/yyyymmdd_epic_<slug>/`

@@ -46,9 +46,12 @@ de `jccdocs/` (en `docs/`, en la raíz) o utillaje ejecutable dentro; portada de
 mapa; formato de la "Fase actual" (recuento de la línea padre = N sub-viñetas = N work items
 activos, cada una un puntero corto; con cero, "ninguno; …"; cualquier otra cosa es historia
 acumulada); línea de versión
-del bloque JCC ausente o anterior a la de la skill instalada. Los work items CERRADOS con nombre
-de un esquema anterior NO son hallazgo (solo lo activo se renombra): lístalos aparte como
-informativo.
+del bloque JCC ausente o anterior a la de la skill instalada; columna Tipo del índice global con
+valores fuera de `Epic` | `Feature` | `Analysis` | `Audit` (mayúscula inicial). Los work items
+CERRADOS con nombre de un esquema anterior NO son hallazgo (solo lo activo se renombra), y tampoco
+lo son los FICHEROS anteriores al esquema (`HANDOFF-NN_`, `BITACORA_`, `INVESTIGACION-`…) aunque
+vivan dentro de un work item activo: los ficheros existentes no se renombran (doc, *Naming*).
+Lístalos aparte como informativo.
 
 CAPA 2 — SEMÁNTICA (siempre): dos verdades temporales conviviendo (documentos vigentes que
 afirman cosas incompatibles); decisiones superadas sin ADDENDUM en el documento superado;
