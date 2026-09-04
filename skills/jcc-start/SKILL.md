@@ -61,8 +61,8 @@ visto bueno, o libre? ¿el repo despliega en push? (f) ¿lee este proyecto rutas
    respuestas de (c), (e) y (f): conectores MCP, lectura acotada y política de push SIEMPRE; la
    confidencialidad en dos niveles, con el remoto privado nombrado, si es de cliente.
 3. `jccdocs/README.md` (el MAPA: cabecera con la jerarquía de hogares y la tabla vacía de work
-   items) y `anexos/` (con un `README.md` de una línea: "material no metodológico: aportado por
-   el operador o entregables sueltos").
+   items) y `anexos/` en la RAÍZ del repo, hermano de `jccdocs/`, nunca dentro (con un `README.md`
+   de una línea: "material no metodológico: aportado por el operador o entregables sueltos").
 4. `README.md` en la raíz como PORTADA MÍNIMA (qué es + enlaces a `jccdocs/README.md` y
    `CLAUDE.md`); si ya existe, añádele solo los enlaces. Portada ≠ mapa: no dupliques el índice.
 5. `git init` si no hay repo, y el primer commit ("bootstrap JCC v1.5.3") con mi visto bueno. Sin

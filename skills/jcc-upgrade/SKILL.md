@@ -22,10 +22,11 @@ bajo `jccdocs/` con la geometría interna intacta, work items ACTIVOS con nombre
 de frontera repuntados, portada ≠ mapa — en UN commit propio, sin push, con un informe de lo que
 se movió y de lo que deliberadamente NO se tocó. Lo que NO hace este command: no reescribe fotos
 (HANDOFF, REVIEW, BRIEF, AUDIT), no renombra work items cerrados, no edita el contenido de
-"Fase actual" ni del Backlog más allá de repuntar enlaces, no pushea.
+"Fase actual" ni del Backlog más allá de repuntar enlaces (única excepción, a pregunta: la historia
+que "Fase actual" arrastre sin activos, paso 3), no pushea.
 
-Antes de nada, dime en una línea modelo y effort activos (`${CLAUDE_EFFORT}`) y contrástalos con
-la tabla "Perfil por fase" (Upgrade = sesión, `claude-fable-5-1`, `high`; copia del perfil vigente,
+Antes de nada, dime en una línea modelo y effort activos (el effort lo inyecta el sistema:
+`${CLAUDE_EFFORT}`) y contrástalos con la tabla "Perfil por fase" (Upgrade = sesión, `claude-fable-5-1`, `high`; copia del perfil vigente,
 calibración v1.5 — si la tabla cambia, cambia esta línea); si no coinciden, señálalo y sigue.
 
 0. PRECONDICIÓN: `git status` limpio. Si hay cambios sin commitear, PARA y pídeme que los
@@ -51,7 +52,8 @@ calibración v1.5 — si la tabla cambia, cambia esta línea); si no coinciden, 
    `feature-NN_<slug>/` dentro de un Epic; un proyecto que es un solo Epic va TAMBIÉN en carpeta de
    Epic; Feature = carpeta plana sin `handoffs/`; Epic = `handoffs/` único en su raíz; nombres que
    empiezan por letra reservados para estructura; portada mínima en la raíz y mapa en
-   `jccdocs/README.md`; `anexos/` para lo no metodológico; bloque JCC v1.5.3 con línea de versión,
+   `jccdocs/README.md`; `anexos/` en la RAÍZ del repo, hermano de `jccdocs/` (nunca dentro), para lo
+   no metodológico; bloque JCC v1.5.3 con línea de versión,
    detección de command, lectores y copiloto con los 10 commands; sección `## Reglas operativas
    (INVIOLABLES)` con sus líneas fijas (conectores MCP, lectura acotada, política de push;
    confidencialidad si es de cliente); índice global con columna Merge/PR; `.gitignore` de medios.
@@ -75,12 +77,18 @@ calibración v1.5 — si la tabla cambia, cambia esta línea); si no coinciden, 
      línea `Bloque JCC v1.5.3` la escribes tú, atómicamente, en ese mismo cambio. Si el bloque era
      anterior a v1.5.3 (cualquier versión, incluida la ausencia de línea), convierte el puntero
      actual de "Fase actual" en la sub-viñeta de su work item y pon el recuento en la línea padre
-     (`**Fase actual:** 1 activo`; "ninguno; …" si no hay trabajo activo).
+     (`**Fase actual:** 1 activo`; "ninguno; …" si no hay trabajo activo). Si NO hay trabajo activo
+     y la "Fase actual" vieja trae más que el puntero (último cerrado, candidato para el siguiente
+     trabajo, pendientes), NO lo dejes tal cual: un bloque v1.5.3 no puede nacer violando su propia
+     regla de "nunca acumula historia". Ponlo en la tabla como pregunta, pieza a pieza: lo durable
+     (candidatos, pendientes decididos no-ahora) → `### Backlog`; lo que es historia (último cerrado,
+     fechas de despliegue) → se retira, porque ya vive en el índice global y en los handoffs.
    - QUÉ SE CREA si falta: la sección `## Reglas operativas (INVIOLABLES)` (pregúntame las
      respuestas: conectores MCP, rutas externas, política de push, ¿cliente?), `jccdocs/README.md`
      (mapa, con la columna Merge/PR; si el proyecto no tenía índice global, constrúyelo desde los
-     work items reales), portada mínima, `anexos/` (con lo que salga de `docs/` que no sea
-     metodología, con mi visto bueno pieza a pieza), `.gitignore` de medios.
+     work items reales), portada mínima, `anexos/` en la raíz del repo, hermano de `jccdocs/`, nunca
+     dentro (con lo que salga de `docs/` que no sea metodología, con mi visto bueno pieza a pieza),
+     `.gitignore` de medios.
    - LO AMBIGUO (¿esto se relee o se ejecuta?, ¿este cambio está activo o cerrado?, ¿este
      `docs/` es material o metodología?) va a la tabla como pregunta, no como decisión tuya.
 
