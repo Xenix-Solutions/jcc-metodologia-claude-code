@@ -32,16 +32,19 @@ contradiga, no solo el primero).
 CAPA 1 — MECÁNICA (siempre; es barata), contra el esquema `jccdocs/` de la metodología: enlaces
 rotos (salvo los declarados como "rotos aceptados" en la cabecera del índice global tras una
 migración o promoción: informativo); documentos en disco sin fila en su README; README del work
-item ausente cuando ya hay un documento que no es DESIGN ni SPEC; sección `## Reglas operativas
+item ausente cuando ya hay un documento que no es DESIGN ni SPEC (en un Analysis standalone, que
+no es `ANALYSIS.md`); sección `## Reglas operativas
 (INVIOLABLES)` de CLAUDE.md ausente o sin sus líneas fijas (conectores MCP, lectura acotada,
 política de push); columna Merge/PR del índice global ausente o con valores fuera del cerrado; filas de README sin fichero en disco; work
 items ACTIVOS con nombre fuera del canon (raíz de `jccdocs/`: `yyyymmdd_<tipo>_<slug>/` con tipo
 epic | feature | analysis; dentro de un Epic: `feature-NN_<slug>/`; ficheros fechados
 `TIPO_yyyymmdd_<slug>.md`); `handoffs/` fuera de un Epic, o handoffs de Epic sueltos por
-`feature-NN_`; nombres que empiezan por letra en la raíz de `jccdocs/` que no sean estructura
+`feature-NN_` (salvo los HANDOFF anteriores a una promoción a Epic: fotos, listadas como aceptadas
+en la cabecera del índice global — informativo); nombres que empiezan por letra en la raíz de `jccdocs/` que no sean estructura
 declarada (`README.md`, `regression/`, `audits/`, `ARCHIVE.md`); documentación metodológica fuera
 de `jccdocs/` (en `docs/`, en la raíz) o utillaje ejecutable dentro; portada de raíz que duplica el
-mapa; formato de la "Fase actual" (¿es un puntero corto o acumula historia?); línea de versión
+mapa; formato de la "Fase actual" (N sub-viñetas = N work items activos, cada una un puntero
+corto; cualquier otra cosa es historia acumulada); línea de versión
 del bloque JCC ausente o anterior a la de la skill instalada. Los work items CERRADOS con nombre
 de un esquema anterior NO son hallazgo (solo lo activo se renombra): lístalos aparte como
 informativo.

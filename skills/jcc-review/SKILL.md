@@ -20,7 +20,8 @@ con la definición de agente del kit (`jcc-review`: `claude-opus-5`, `high`, otr
 sesión implementadora; la diversidad de revisor es el argumento). Un subagente sin definición
 HEREDA el effort de la sesión padre, así que no lo lances sin ella. Dime modelo y effort activos
 y contrástalos con la tabla "Perfil por fase" (Review = `claude-opus-5`, `high`, en subagente o
-en sesión aparte); si no coinciden, anótalo en la cabecera del informe y sigue. Si corres como
+en sesión aparte; copia del perfil vigente, calibración v1.5 — si la tabla cambia, cambia esta
+línea y la definición de agente); si no coinciden, anótalo en la cabecera del informe y sigue. Si corres como
 subagente, UNO solo — un informe con veredicto único es el contrato, para que el operador
 disponga sobre una sola lista — y un subagente de verdad: NUNCA un fork del contexto actual. Un
 fork hereda la historia de conversación de quien implementó, y eso destruye justamente la
@@ -51,7 +52,9 @@ el propio SPEC dejó fuera algo crítico, márcalo aparte, como hallazgo sobre e
 INFORME: escríbelo en `REVIEW.md`, junto al SPEC en la carpeta del work item (Feature plana o
 `feature-NN_<slug>/` de un Epic); si ya hay una review de una pasada anterior, la nueva es
 `REVIEW-02_<slug>.md` (luego `-03`…) y la primera conserva `REVIEW.md`, nunca se renombra
-— un REVIEW por pasada de implementación, no por SPEC. Por cada hallazgo: qué falla, en qué fichero, tipo (regresión ·
+— un REVIEW por pasada de implementación, no por SPEC. Criterio: FIX = corrige hallazgos de una
+review sin cambiar el SPEC → sección aditiva en el REVIEW original (abajo); NUEVA PASADA = el SPEC
+cambió o hay código nuevo fuera de los hallazgos → `REVIEW-NN_` nuevo. Por cada hallazgo: qué falla, en qué fichero, tipo (regresión ·
 incumplimiento del SPEC · bug · hueco del SPEC), GRAVEDAD, tu nivel de CONFIANZA y la CLÁUSULA
 DEL SPEC que incumple (o "sin cláusula" si es un bug fuera de lo especificado). Etiquetar no es
 filtrar: REPORTA TODO lo que encuentres, incluido aquello de lo que dudes o que consideres menor;

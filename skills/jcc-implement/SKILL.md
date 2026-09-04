@@ -73,7 +73,8 @@ porqué; la EVIDENCIA de ejecución va al handoff, no al DESIGN (la evidencia vi
 
 AL CERRAR LA FASE (higiene documental JCC; se EJECUTA, no se ofrece): (1) si creaste documentos
 (p. ej. un RUNBOOK) o un ADDENDUM, regístralos/actualízalos en el README del work item; (2)
-SOBRESCRIBE la línea "Fase actual" de CLAUDE.md — SOLO los campos del puntero (work item · fase ·
+SOBRESCRIBE la sub-viñeta de ESTE work item en "Fase actual" de CLAUDE.md (una por work item
+activo; las de los demás no se tocan) — SOLO los campos del puntero (work item · fase ·
 siguiente command · enlaces al README, al último handoff y al índice global `jccdocs/README.md`
 — los que existan; no fabriques documentos solo para enlazarlos); edítala con EDICIÓN DIRIGIDA —
 toca solo esa sección, no reescribas CLAUDE.md entero (calibración v1.5 para Fable 5.1 — tiende a
@@ -93,14 +94,16 @@ revisados; (2) la carpeta del work item, donde escribirá `REVIEW.md` (o `REVIEW
 ya hay una pasada anterior) y registrará su fila en el README del work item, creándolo si no
 existe; (3) si había código existente (sí/no) y dónde está la superficie de regresión ("Qué se
 PRESERVA" del SPEC); (4) si es RE-REVIEW de un fix: qué hallazgos se arreglaron y en qué commits,
-y que el resultado va como sección fechada aditiva al `REVIEW.md` original; (5) si durante esta
+y que el resultado va como sección fechada aditiva al `REVIEW.md` original (FIX = corrige
+hallazgos sin cambiar el SPEC; si el SPEC cambió o hay código nuevo fuera de los hallazgos, es
+NUEVA PASADA → `REVIEW-NN_` nuevo, y el punto (2) lo dice); (5) si durante esta
 fase Claude Code cambió de modelo por fallback automático del clasificador (avisa en la sesión;
 deja la sesión en Opus 4.8), dilo aquí y anótalo también en el mensaje del commit: el revisor
 Opus 5 dejaría de ser "otra familia". Nada más: ni tu evidencia ni tu opinión sobre el código —
 el revisor no debe darlas por buenas.
 
 TRAS EL VEREDICTO (lo hace esta sesión, la orquestadora; el revisor tiene prohibido tocar los
-hogares): SOBRESCRIBE la línea "Fase actual" del work item con el resultado — work item · Review
+hogares): SOBRESCRIBE la sub-viñeta de este work item en "Fase actual" con el resultado — work item · Review
 · veredicto (limpio, o con hallazgos abiertos) · siguiente command (`/jcc-implement <ruta al
 REVIEW>` para los fixes; si está limpio, `/jcc-handoff` para cerrar) · enlaces. El estado
 "cerrado" del work item NO lo escribes tú: lo escribe `/jcc-handoff` en el índice global cuando

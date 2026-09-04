@@ -95,7 +95,8 @@ cuesta minutos; retroactivamente, con documentos acumulados, mover ficheros arri
 Con mi visto bueno sigue la "Receta de promoción" del doc de metodología (sección *Feature o
 Epic*): carpeta de Epic con README y `handoffs/`; `git mv` del Feature existente a
 `feature-01_<slug>/` sin mover sus fotos; DESIGN transversal; repunte del índice global y de
-"Fase actual"; enlaces rotos desde fotos listados como aceptados; commit propio. Un Epic nuevo
+"Fase actual"; enlaces rotos desde fotos y HANDOFF que se quedan en `feature-01_` listados como
+aceptados en la cabecera del índice global `jccdocs/README.md`; commit propio. Un Epic nuevo
 sin Feature previo se crea directamente como carpeta de Epic (DESIGN transversal + README +
 `handoffs/` + `feature-NN_<slug>/`).
 
@@ -111,7 +112,9 @@ documento que no sea DESIGN ni SPEC (regla única del doc), así que aquí solo 
 si el work item es nuevo Y cuelga de la raíz de `jccdocs/` (una `feature-NN_` de Epic va a la
 tabla del README del Epic, no al índice global), añade su fila al índice global
 `jccdocs/README.md`; (2) SOBRESCRIBE la
-línea "Fase actual" de CLAUDE.md — SOLO los campos del puntero (work item · fase · siguiente
+sub-viñeta de ESTE work item en "Fase actual" de CLAUDE.md (una por work item activo; las de los
+demás no se tocan; si es el primer puntero, borra el placeholder entre <>) — SOLO los campos del
+puntero (work item · fase · siguiente
 command · enlaces al README, al último handoff y al índice global — los que existan; no fabriques
 documentos solo para enlazarlos); edítala con EDICIÓN DIRIGIDA — toca solo esa sección, no
 reescribas CLAUDE.md entero (calibración v1.5 para Fable 5.1 — tiende a reescribir ficheros

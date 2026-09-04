@@ -20,9 +20,10 @@ MODELO (tres hogares + índice global + backlog):
 - HANDOFF(s) fechados       = fotos fechadas con evidencia; su UBICACIÓN la fija el paso 1 según
   sea Feature o Epic (ahí vive la historia; la evidencia vive UNA sola vez, aquí — DESIGN/README/
   índices enlazan, no duplican).
-- jccdocs/README.md         = índice GLOBAL de todos los work items; AUTORITATIVO para el estado
-  de merge/PR (el handoff es foto pre-merge y no se reedita). Se refresca aquí, en el handoff,
-  no en los cierres de fase.
+- jccdocs/README.md         = índice GLOBAL de todos los work items (o el índice equivalente que
+  el proyecto YA tenga, si aún no migró a `jccdocs/`); AUTORITATIVO para el estado de merge/PR
+  (el handoff es foto pre-merge y no se reedita). Se refresca aquí, en el handoff, no en los
+  cierres de fase.
 - CLAUDE.md "### Backlog"   = pendientes DURABLES (decidido no-ahora), una línea cada uno;
   curado: se PODA lo hecho o caducado.
 
@@ -30,7 +31,9 @@ MODELO (tres hogares + índice global + backlog):
    - Ubicación: **Feature** → `HANDOFF_yyyymmdd_<slug>.md` EN LA CARPETA del Feature, junto al
      DESIGN/SPEC — **sin subcarpeta `handoffs/`**, aunque sean varias sesiones (se fechan y
      conviven). **Epic** → el ÚNICO `handoffs/` en la RAÍZ del Epic (nunca por Feature), aunque
-     la sesión se centrara en un `feature-NN_` concreto. **Analysis standalone** → en su carpeta
+     la sesión se centrara en un `feature-NN_` concreto (excepción: los HANDOFF anteriores a una
+     promoción a Epic se quedan en su `feature-NN_`, son fotos; están listados como aceptados en la
+     cabecera del índice global). **Analysis standalone** → en su carpeta
      `yyyymmdd_analysis_<slug>/`. Los handoffs existentes con nombres anteriores no se renombran.
      El `<slug>` del handoff es el TEMA de la sesión, no el de la carpeta; dos cierres el mismo
      día llevan slugs distintos.
@@ -64,15 +67,17 @@ MODELO (tres hogares + índice global + backlog):
    documentos vigentes que contradiga; los documentos cuyas cifras eran ciertas para su fecha son
    fotos y NO se tocan.
 
-4. SOBRESCRIBIR "Fase actual" en CLAUDE.md con un PUNTERO CORTO — con EDICIÓN DIRIGIDA: toca solo
-   esa sección, no reescribas CLAUDE.md entero (calibración v1.5 para Fable 5.1 — tiende a
-   reescribir ficheros completos; revisar al cambiar de modelo) — que contenga solo: work item
-   activo · fase · siguiente command CON LA BARRA AL INICIO (la instrucción de arranque ES el
-   comando: `/jcc-<fase>` y el contexto detrás, en el mismo mensaje) · enlaces al README del work
-   item y a su último handoff · enlace al índice global `jccdocs/README.md` (enlaza los que
-   existan; no fabriques documentos solo para enlazarlos). Si no queda trabajo activo, dilo
-   ("ninguno; el siguiente arranca con `/jcc-design`, `/jcc-analysis` o `/jcc-start`"). NADA de
-   trabajos ya cerrados en esta línea. Si el proyecto no tiene aún el bloque JCC, o lo tiene de
+4. SOBRESCRIBIR en "Fase actual" de CLAUDE.md la SUB-VIÑETA DE ESTE WORK ITEM con un PUNTERO
+   CORTO — "Fase actual" lleva una sub-viñeta por work item activo; las de los demás work items
+   NO se tocan — con EDICIÓN DIRIGIDA: toca solo esa sub-viñeta, no reescribas CLAUDE.md entero
+   (calibración v1.5 para Fable 5.1 — tiende a reescribir ficheros completos; revisar al cambiar
+   de modelo). Contenido: work item · fase · siguiente command CON LA BARRA AL INICIO (la
+   instrucción de arranque ES el comando: `/jcc-<fase>` y el contexto detrás, en el mismo
+   mensaje) · enlaces al README del work item y a su último handoff · enlace al índice global
+   `jccdocs/README.md` (enlaza los que existan; no fabriques documentos solo para enlazarlos). Si
+   este cierre CIERRA el work item, borra solo su sub-viñeta; si era la última, deja la línea
+   "ninguno; el siguiente arranca con `/jcc-design`, `/jcc-analysis` o `/jcc-start`". NADA de
+   trabajos ya cerrados en "Fase actual". Si el proyecto no tiene aún el bloque JCC, o lo tiene de
    una versión anterior, dilo y ofréceme `/jcc-start` / `/jcc-upgrade` para la próxima apertura
    (o créalo ahora con la plantilla del doc, con mi visto bueno).
 
@@ -83,7 +88,10 @@ MODELO (tres hogares + índice global + backlog):
    `PR #n abierto` · `mergeado yyyy-mm-dd` · `commit directo`); si el merge queda para después
    del cierre, el índice lo dice y la reconciliación de la próxima sesión lo pondrá al día.
    Créalos si no existen: el README del work item es obligatorio desde que hay un HANDOFF (regla
-   única del doc), y el índice global siempre.
+   única del doc, también en un Analysis standalone); el índice global también, SALVO que el
+   proyecto no esté en canon (bloque sin línea de versión, o documentación metodológica fuera de
+   `jccdocs/`, p. ej. `docs/cambios/`): entonces actualiza el índice que el proyecto YA tenga, NO
+   crees `jccdocs/README.md` (sería un segundo contenedor) y recuérdame `/jcc-upgrade`.
 
 6. BACKLOG, MEMORIA, `/usage` Y PENDIENTES. Los pendientes DURABLES (decidido no-ahora:
    endurecimientos, deudas conscientes, decisiones diferidas) van al `### Backlog` de CLAUDE.md,

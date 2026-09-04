@@ -24,7 +24,8 @@ claras de encargo, dímelo: no necesito analysis, necesito `/jcc-design`.
 
 Antes de nada, dime en una línea modelo y effort activos (el effort lo inyecta el sistema:
 `${CLAUDE_EFFORT}`) y contrástalos con la tabla "Perfil por fase" (Analysis = sesión,
-`claude-fable-5-1`, `high`); si no coinciden, señálalo y sigue.
+`claude-fable-5-1`, `high`; copia del perfil vigente, calibración v1.5 — si la tabla cambia,
+cambia esta línea); si no coinciden, señálalo y sigue.
 
 CÓMO TRABAJAMOS (la misma técnica que en design, porque la entrevista socrática es técnica
 compartida, no lo que distingue las dos): entrevístame por tandas cortas de preguntas ABIERTAS
@@ -48,6 +49,9 @@ EL ARTEFACTO Y SU HOGAR (esquema `jccdocs/`):
 - Analysis STANDALONE (aún no hay Epic al que pertenezca; típico pre-proyecto o "¿abrimos esto?")
   → carpeta `jccdocs/yyyymmdd_analysis_<slug>/` con `ANALYSIS.md` (y los `BRIEF_yyyymmdd_<slug>.md`
   que lo alimenten, si los hay), registrada con su fila en el índice global `jccdocs/README.md`.
+  Regla única del README aplicada al Analysis: el `ANALYSIS.md` hace el papel del DESIGN; la
+  carpeta lleva `README.md` desde el primer documento que no sea él (un BRIEF, un HANDOFF), y lo
+  crea quien escribe ese documento.
 - Analysis SOBRE UN EPIC existente ("¿seguimos bien con este Epic?", replanteamiento)
   → fichero `ANALYSIS_yyyymmdd_<slug>.md` en la carpeta del Epic, registrado en el README del Epic.
 - Si el proyecto aún no tiene `jccdocs/` ni bloque JCC, no improvises estructura: dilo y ofrece

@@ -15,7 +15,8 @@ DESIGN (salvo evidencia nueva, abajo), no avanza de fase por su cuenta.
 
 Antes de nada, dime en una línea modelo y effort activos (el effort lo inyecta el sistema:
 `${CLAUDE_EFFORT}`) y contrástalos con la tabla "Perfil por fase" (Spec = sesión,
-`claude-fable-5-1`, `high`); si no coinciden, señálalo y sigue.
+`claude-fable-5-1`, `high`; copia del perfil vigente, calibración v1.5 — si la tabla cambia,
+cambia esta línea); si no coinciden, señálalo y sigue.
 
 Lee DESIGN.md de este work item (si el mensaje trae una ruta detrás del command, es ese; trabaja en plan mode hasta que apruebe las decisiones): es tu fuente de verdad (si sigues en la misma sesión que el
 diseño, la conversación queda subordinada a él).
@@ -28,7 +29,7 @@ AskUserQuestion solo para cerrar forks acotados.
 PREGUNTAS ABIERTAS DEL DESIGN: si el DESIGN deja preguntas abiertas que afectan a este SPEC,
 ciérralas PRIMERO contra la fuente primaria (documentación oficial, código, datos) o declara el
 SPEC BLOQUEADO por ellas: no se escribe el SPEC; la pregunta y a quién corresponde van como
-ADDENDUM fechado al DESIGN, y la línea "Fase actual" queda en Spec con "bloqueado por
+ADDENDUM fechado al DESIGN, y la sub-viñeta de este work item en "Fase actual" queda en Spec con "bloqueado por
 <pregunta>" y `/jcc-spec` como siguiente command para cuando se cierre. No especifiques sobre
 una incógnita.
 
@@ -83,7 +84,8 @@ no la brevedad. Un SPEC no mejora por ser más largo ni más corto; mejora por s
 
 AL CERRAR LA FASE (higiene documental JCC; se EJECUTA, no se ofrece): (1) registra el/los SPEC
 creados en el README del work item, si existe (regla única del doc: el README es obligatorio en
-Epic y desde el primer documento que no sea DESIGN ni SPEC; lo crea quien escribe ese documento); (2) SOBRESCRIBE la línea "Fase actual" de CLAUDE.md — SOLO los campos del puntero
+Epic y desde el primer documento que no sea DESIGN ni SPEC; lo crea quien escribe ese documento); (2) SOBRESCRIBE la sub-viñeta de ESTE work item en "Fase actual" de CLAUDE.md (una por work item
+activo; las de los demás no se tocan) — SOLO los campos del puntero
 (work item · fase · siguiente command · enlaces al README, al último handoff y al índice global
 `jccdocs/README.md` — los que existan; no fabriques documentos solo para enlazarlos); edítala con
 EDICIÓN DIRIGIDA — toca solo esa sección, no reescribas CLAUDE.md entero (calibración v1.5 para
