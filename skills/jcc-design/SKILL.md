@@ -8,9 +8,10 @@ disable-model-invocation: true
 Quiero trabajar en un Feature o un Epic y necesito que lo diseñemos JUNTOS antes de tocar nada.
 Este mensaje son TUS INSTRUCCIONES (Fase 1, Design, de la metodología JCC).
 
-RESULTADO DE ESTA FASE: un `DESIGN.md` acordado conmigo que fija QUÉ se construye y por qué, con
-las decisiones estructurales tomadas en mesa común, sin entrar en el stack ni en el detalle de
-implementación. Tiene que valer por sí solo: la siguiente fase puede abrirse en sesión fresca y
+RESULTADO DE ESTA FASE: un `DESIGN.md` acordado conmigo que fija CÓMO se aborda el encargo — qué
+se construye, con qué alcance, con qué decisiones estructurales tomadas en mesa común —, sin
+entrar en el stack ni en el detalle de implementación (eso es Spec; y si la duda es todavía si
+hacerlo o qué hacer, eso es Analysis). Tiene que valer por sí solo: la siguiente fase puede abrirse en sesión fresca y
 con otro modelo, así que todo lo que Spec necesite debe estar en el artefacto, no en esta
 conversación. Lo que NO hace esta fase: no escribe código, no elige stack (eso es `/jcc-spec`),
 no avanza de fase por su cuenta.
@@ -25,12 +26,14 @@ de un dictado, puede traer ruido que no detecté al revisarla — no la tomes al
 
 ANTES DE NADA (arranque de sesión): dime modelo y effort activos — el effort lo inyecta el sistema
 en este texto: `${CLAUDE_EFFORT}` — y contrástalos con la tabla "Perfil por fase" de la
-metodología (Design = sesión, `claude-fable-5-1`, `high`). Si no coinciden, señálalo AHORA:
-cambiar el effort a mitad de sesión obliga a releer toda la conversación sin caché, así que se
-decide al abrir. No bloquees: dilo y sigue.
+metodología (Design = sesión, `claude-fable-5-1`, `high`; copia del perfil vigente, calibración
+v1.5 — si la tabla cambia, cambia esta línea). Si no coinciden, señálalo AHORA: el effort se
+elige al abrir (cambiarlo a mitad desplaza la calibración de la fase y, según el proveedor,
+invalida la caché). No bloquees: dilo y sigue.
 
-Trabajamos como dos especialistas que diseñan en pareja. Tú conduces lo técnico y la elección
-de tecnología; yo decido la estrategia, el alcance y las restricciones. Cuando una decisión
+Trabajamos como dos especialistas que diseñan en pareja. Tú conduces lo técnico (la elección de
+stack la dejas a `/jcc-spec`; aquí señalas las restricciones que la condicionan); yo decido la
+estrategia, el alcance y las restricciones. Cuando una decisión
 técnica sea DIFÍCIL DE REVERTIR o CONDICIONE EL FUTURO (modelo de datos, abstracciones,
 contratos, dependencias de peso), no la decidas por tu cuenta: ponla sobre la mesa, recomiéndame
 una opción con su porqué, y decidimos juntos. Lo reversible y local, decídelo tú y menciónalo.
@@ -46,8 +49,9 @@ con esto. Si lo hay, oriéntate (lee CLAUDE.md si existe y estudia la zona afect
 cómo funciona HOY y qué podría romperse si lo toco (la superficie de regresión); espera a que
 confirme que lo has entendido bien. Si es algo nuevo, sin nada que preservar, salta este paso.
 
-PASO 2 — Entrevista socrática. Antes de escribir nada, entrevístame para llegar juntos al
-mejor diseño:
+PASO 2 — Entrevista socrática (en plan mode: la entrevista es solo lectura; sales de él con mi
+visto bueno para escribir). Antes de escribir nada, entrevístame para llegar juntos al mejor
+diseño:
 - Empieza con preguntas ABIERTAS, por tandas cortas, para sacar supuestos, contradicciones,
   casos límite y huecos que quizá no he considerado.
 - Usa AskUserQuestion solo para CERRAR una bifurcación ya acotada (opciones claras), no para
@@ -79,13 +83,21 @@ roadmap); Epic nuevo → `jccdocs/yyyymmdd_epic_<slug>/DESIGN.md` (transversal) 
 `handoffs/`. Fecha `yyyymmdd`, underscore entre campos, guion entre palabras. Si el proyecto aún
 no tiene `jccdocs/` ni bloque JCC en CLAUDE.md, no improvises la estructura: dilo y ofrece
 `/jcc-start` (bootstrap) antes de escribir; si prefiero seguir, crea lo mínimo según el esquema.
+Si el proyecto TIENE bloque JCC pero su documentación metodológica vive FUERA de `jccdocs/` (p.
+ej. `docs/cambios/`; bloque anterior a v1.5), NO escribas en `jccdocs/`: dilo, ofrece
+`/jcc-upgrade`, y si prefiero seguir sin migrar, escribe donde el proyecto ya escribe y con su
+esquema de nombres — dos contenedores conviviendo es justo la degradación que la v1.5 mata.
 
 PROMOCIÓN A EPIC: si al entrevistar ves que en realidad son VARIOS trabajos con DESIGN/SPEC
-propios, es un Epic: proponme estructurarlo como carpeta de Epic (DESIGN transversal + README +
-`handoffs/` + `feature-NN_<slug>/`), en vez de apilar varios DESIGN en plano. Y si el DESIGN que
-vas a escribir sería el SEGUNDO de una carpeta plana ya existente, PÁRATE antes de escribirlo y
-proponme la promoción en ese momento: ahora cuesta minutos; retroactivamente, con documentos
-acumulados, mover ficheros arriesga el rastro.
+propios, o que lo que traigo es un capítulo de un Feature YA EXISTENTE (la pregunta es "¿estas
+dos Features deberían ser un Epic?"), PÁRATE antes de escribir y proponme la promoción: ahora
+cuesta minutos; retroactivamente, con documentos acumulados, mover ficheros arriesga el rastro.
+Con mi visto bueno sigue la "Receta de promoción" del doc de metodología (sección *Feature o
+Epic*): carpeta de Epic con README y `handoffs/`; `git mv` del Feature existente a
+`feature-01_<slug>/` sin mover sus fotos; DESIGN transversal; repunte del índice global y de
+"Fase actual"; enlaces rotos desde fotos listados como aceptados; commit propio. Un Epic nuevo
+sin Feature previo se crea directamente como carpeta de Epic (DESIGN transversal + README +
+`handoffs/` + `feature-NN_<slug>/`).
 
 LONGITUD DEL DOCUMENTO (calibración v1.5 para Fable 5.1, revalidada — contrarresta su prosa densa documentada; revisar al cambiar de modelo): recorta
 RELLENO (secciones vacías, resúmenes redundantes, boilerplate), NO conectivas ni contexto. El
@@ -94,8 +106,11 @@ no la brevedad: una frase tan densa que hay que descifrarla es tan cara como un 
 Un DESIGN no mejora por ser más largo, ni por ser más corto.
 
 AL CERRAR LA FASE (higiene documental JCC; se EJECUTA, no se ofrece): (1) registra el `DESIGN.md`
-en el README del work item (créalo si es un Epic o si el work item ya pasa de ~4 documentos) y,
-si el work item es nuevo, añade su fila al índice global `jccdocs/README.md`; (2) SOBRESCRIBE la
+en el README del work item — créalo si es un Epic; en un Feature el README nace con el primer
+documento que no sea DESIGN ni SPEC (regla única del doc), así que aquí solo si ya existe — y,
+si el work item es nuevo Y cuelga de la raíz de `jccdocs/` (una `feature-NN_` de Epic va a la
+tabla del README del Epic, no al índice global), añade su fila al índice global
+`jccdocs/README.md`; (2) SOBRESCRIBE la
 línea "Fase actual" de CLAUDE.md — SOLO los campos del puntero (work item · fase · siguiente
 command · enlaces al README, al último handoff y al índice global — los que existan; no fabriques
 documentos solo para enlazarlos); edítala con EDICIÓN DIRIGIDA — toca solo esa sección, no

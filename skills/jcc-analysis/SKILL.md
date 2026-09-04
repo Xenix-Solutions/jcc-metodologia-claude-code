@@ -14,7 +14,8 @@ $ARGUMENTS
 
 Si lo de arriba está vacío, pídemelo antes de empezar.
 
-RESULTADO: un ANALYSIS fechado, registrado en su README, que deja escrito qué se preguntó, qué se
+RESULTADO: un ANALYSIS fechado, registrado en su índice (standalone → fila en el índice global
+`jccdocs/README.md`; sobre un Epic → README del Epic), que deja escrito qué se preguntó, qué se
 comprobó, qué opciones se sopesaron y a qué se llegó — y un cierre con bifurcación explícita
 (abajo). La diferencia con `/jcc-query` es esta: query lee y no deja rastro; analysis delibera y
 SÍ deja rastro de primera clase. La diferencia con `/jcc-design`: design responde "¿CÓMO hacemos
@@ -51,6 +52,10 @@ EL ARTEFACTO Y SU HOGAR (esquema `jccdocs/`):
   → fichero `ANALYSIS_yyyymmdd_<slug>.md` en la carpeta del Epic, registrado en el README del Epic.
 - Si el proyecto aún no tiene `jccdocs/` ni bloque JCC, no improvises estructura: dilo y ofrece
   `/jcc-start` (bootstrap) antes de escribir; si prefiero seguir, crea lo mínimo según el esquema.
+- Si el proyecto TIENE bloque JCC pero su documentación metodológica vive FUERA de `jccdocs/`
+  (p. ej. `docs/cambios/`; bloque anterior a v1.5), NO escribas en `jccdocs/`: dilo, ofrece
+  `/jcc-upgrade`, y si prefiero seguir sin migrar, escribe donde el proyecto ya escribe y con su
+  esquema — nunca un segundo contenedor.
 
 CONTENIDO DEL ANALYSIS: la pregunta tal como quedó formulada tras la entrevista (suele cambiar);
 el contexto comprobado, con su evidencia; las opciones consideradas con sus pros, contras y
@@ -67,10 +72,11 @@ CIERRE CON BIFURCACIÓN (ofrécemela explícitamente; yo elijo y yo disparo):
     ANALYSIS como material detrás: `/jcc-design <ruta al ANALYSIS>` (design acepta material en su
     argumento). Recuérdame que puede abrirse en sesión fresca.
 (b) Cambia una decisión de un Epic existente → propón el texto de un ADDENDUM fechado al DESIGN
-    transversal de ese Epic; se escribe solo con mi visto bueno explícito, y es lo único del Epic
-    que este command puede tocar.
+    transversal de ese Epic; se escribe solo con mi visto bueno explícito, y es lo único del
+    DESIGN del Epic que este command puede tocar (el README del Epic sí lo actualizas, para
+    registrar el ANALYSIS).
 (c) Muere documentado → el ANALYSIS registra la decisión de no seguir y su porqué; su fila en el
-    README queda como "cerrado"; nada más que hacer.
-Registra el ANALYSIS en su README ANTES de ofrecer la bifurcación (esta higiene se EJECUTA, no
+    índice queda como "cerrado"; nada más que hacer.
+Registra el ANALYSIS en su índice (arriba) ANTES de ofrecer la bifurcación (esta higiene se EJECUTA, no
 se ofrece). No toques la "Fase actual" de CLAUDE.md: un analysis no es trabajo activo del
 workflow; si de él nace un Feature o Epic, será `/jcc-design` quien la escriba.

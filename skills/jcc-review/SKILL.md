@@ -25,8 +25,10 @@ subagente, UNO solo — un informe con veredicto único es el contrato, para que
 disponga sobre una sola lista — y un subagente de verdad: NUNCA un fork del contexto actual. Un
 fork hereda la historia de conversación de quien implementó, y eso destruye justamente la
 independencia que da valor a esta fase. Si el modelo con el que corres no es el de la tabla (p.
-ej. degradación por clasificador en código de autenticación o criptografía), dilo en la
-cabecera: el lector debe saber con qué ojos se revisó.
+ej. fallback automático del clasificador de Claude Code, que re-ejecuta en Opus 4.8 las
+peticiones marcadas como *cybersecurity* o *biology* y deja la sesión en ese modelo), dilo en la
+cabecera: el lector debe saber con qué ojos se revisó. Si el mensaje de lanzamiento dice que la
+sesión implementadora sufrió ese fallback, dilo también: ya no sois "otra familia".
 
 Lee el/los SPEC (el contrato) y CLAUDE.md, y revisa la implementación del repo contra ellos.
 Postura por defecto: escéptica. Asume que hay huecos y búscalos.
@@ -47,15 +49,18 @@ NO revises estilo ni preferencias: solo correctitud, regresión y cumplimiento. 
 el propio SPEC dejó fuera algo crítico, márcalo aparte, como hallazgo sobre el SPEC.
 
 INFORME: escríbelo en `REVIEW.md`, junto al SPEC en la carpeta del work item (Feature plana o
-`feature-NN_<slug>/` de un Epic); si ya hay una review de una pasada anterior, `REVIEW-NN_<slug>.md`
+`feature-NN_<slug>/` de un Epic); si ya hay una review de una pasada anterior, la nueva es
+`REVIEW-02_<slug>.md` (luego `-03`…) y la primera conserva `REVIEW.md`, nunca se renombra
 — un REVIEW por pasada de implementación, no por SPEC. Por cada hallazgo: qué falla, en qué fichero, tipo (regresión ·
 incumplimiento del SPEC · bug · hueco del SPEC), GRAVEDAD, tu nivel de CONFIANZA y la CLÁUSULA
 DEL SPEC que incumple (o "sin cláusula" si es un bug fuera de lo especificado). Etiquetar no es
 filtrar: REPORTA TODO lo que encuentres, incluido aquello de lo que dudes o que consideres menor;
-NO filtres por importancia, el filtro lo hago yo (calibración v1.2.1, revalidada para Opus 4.8
-en v1.3.2, PENDIENTE de revalidar en Opus 5 — un filtro de gravedad en el prompt reduce el
-recall; revisar al cambiar de modelo). Termina con el veredicto claro. Registra el informe en el
-README del work item.
+NO filtres por importancia, el filtro lo hago yo (calibración v1.2.1 nacida para Opus 5,
+revalidada en Opus 4.8 en v1.3.2, vigente para Opus 5 — un filtro de gravedad en el prompt
+reduce el recall; revisar al cambiar de modelo). Termina con el veredicto claro. Registra el
+informe en el README del work item; si no existe, créalo (regla única del doc: el README es
+obligatorio desde el primer documento que no sea DESIGN ni SPEC) con qué es el work item y su
+índice de documentos.
 
 RE-REVIEW DE UN FIX: si te invocan para re-revisar los fixes de una review anterior, el alcance
 es el fix y su regresión, no el trabajo entero; escribe el resultado como SECCIÓN FECHADA
@@ -63,10 +68,13 @@ ADITIVA al final del `REVIEW.md` original ("Re-review yyyy-mm-dd: hallazgos H1, 
 sigue abierto porque…"), sin reescribir la foto de la review. La cadena hallazgos → fixes →
 re-review debe leerse en orden en el mismo fichero.
 
-LONGITUD DEL INFORME (calibración v1.5, revalidada para Fable 5.1 y vigente para Opus 5, el modelo de esta fase — disciplina de longitud durable, no específica de un modelo; revisar al cambiar de modelo): cada
+LONGITUD DEL INFORME (calibración v1.5, revalidada para Fable 5.1 y vigente para Opus 5, el modelo de esta fase; revisar al cambiar de modelo): cada
 hallazgo, breve y al grano — recorta relleno, no conectivas ni contexto: el hallazgo tiene que
 entenderse de corrido sin descifrar telegramas. Esto NO es licencia para omitir hallazgos:
 repórtalos todos, cada uno en pocas líneas.
 
 BUCLE DE CIERRE: los hallazgos vuelven a la Fase 3 (`/jcc-implement`) y se re-verifica. Itera
-3↔4 hasta veredicto limpio.
+3↔4 hasta veredicto limpio. Quien registra el veredicto en los hogares NO eres tú: la sesión
+orquestadora (la que te lanzó, o la que lea tu informe si corriste en sesión aparte) sobrescribe
+"Fase actual" con el veredicto y el siguiente command; el estado "cerrado" del work item lo
+escribe `/jcc-handoff` en el índice global. Tú entregas el informe y su fila en el README, y paras.

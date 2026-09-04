@@ -6,15 +6,18 @@ disable-model-invocation: true
 ---
 
 Esto es una AUDITORÍA de la documentación del proyecto: independiente y adversarial. No es una
-fase del workflow JCC; se dispara deliberadamente. La hace quien NO escribió esa documentación —
-un subagente fresco o una sesión aparte, nunca la sesión cuyo trabajo se audita y NUNCA un fork
-del contexto actual (hereda la historia de quien escribió y destruye la independencia). Tu
+fase del workflow JCC; se dispara deliberadamente. La hace quien NO escribió esa documentación:
+una SESIÓN APARTE, nunca la sesión cuyo trabajo se audita y NUNCA un fork del contexto actual
+(hereda la historia de quien escribió y destruye la independencia). Tampoco un subagente
+genérico: en v1.5.1 no hay definición de agente para audit, y un subagente sin definición hereda
+el effort de la sesión y no carga esta skill. Tu
 postura: ASUME QUE LA DOCUMENTACIÓN MIENTE, y busca demostrarlo. Alcance pedido (puede venir
 vacío):
 
 $ARGUMENTS
 
-Si viene vacío: audita el work item ACTIVO (el que apunta la "Fase actual"). "Proyecto entero"
+Si viene vacío: audita el/los work items ACTIVOS (los que apuntan las líneas de "Fase actual";
+si hay varias, todos). "Proyecto entero"
 solo si se pide con esas palabras. La capa 3 solo corre si se pidió explícitamente.
 
 RESULTADO: un informe con TODOS los hallazgos (cada uno con `fichero:línea`, capa, gravedad y
@@ -27,7 +30,11 @@ Quien lo corrija después aplicará el backport COMPLETO (todos los documentos q
 contradiga, no solo el primero).
 
 CAPA 1 — MECÁNICA (siempre; es barata), contra el esquema `jccdocs/` de la metodología: enlaces
-rotos; documentos en disco sin fila en su README; filas de README sin fichero en disco; work
+rotos (salvo los declarados como "rotos aceptados" en la cabecera del índice global tras una
+migración o promoción: informativo); documentos en disco sin fila en su README; README del work
+item ausente cuando ya hay un documento que no es DESIGN ni SPEC; sección `## Reglas operativas
+(INVIOLABLES)` de CLAUDE.md ausente o sin sus líneas fijas (conectores MCP, lectura acotada,
+política de push); columna Merge/PR del índice global ausente o con valores fuera del cerrado; filas de README sin fichero en disco; work
 items ACTIVOS con nombre fuera del canon (raíz de `jccdocs/`: `yyyymmdd_<tipo>_<slug>/` con tipo
 epic | feature | analysis; dentro de un Epic: `feature-NN_<slug>/`; ficheros fechados
 `TIPO_yyyymmdd_<slug>.md`); `handoffs/` fuera de un Epic, o handoffs de Epic sueltos por
@@ -55,7 +62,8 @@ muestreo), nunca "todo el proyecto" por defecto. Cada una se contrasta con su fu
 
 INFORME: escribe `AUDIT_yyyymmdd_<slug>.md` en la carpeta del work item auditado (si es
 "proyecto entero", proponme la ubicación: `jccdocs/audits/` es el nombre reservado para ello) y
-registra su fila en el README correspondiente. Por hallazgo: qué está mal, `fichero:línea`,
+registra su fila en el README correspondiente (el del work item; si no existe, créalo — regla
+única del doc —; en "proyecto entero", el índice global con Tipo `Audit`). Por hallazgo: qué está mal, `fichero:línea`,
 capa, gravedad y tu nivel de confianza. REPORTA TODO lo que encuentres, incluido aquello de lo
 que dudes o que consideres menor; NO filtres por importancia, el filtro lo hace el operador
 (calibración v1.2.1 heredada de /jcc-review, PENDIENTE de revalidar en el modelo en que corra —

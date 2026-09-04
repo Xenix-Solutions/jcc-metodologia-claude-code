@@ -28,9 +28,14 @@ Antes de nada, dime en una línea modelo y effort activos (`${CLAUDE_EFFORT}`) y
 la tabla "Perfil por fase" (Upgrade = sesión, `claude-fable-5-1`, `high`); si no coinciden,
 señálalo y sigue.
 
+0. PRECONDICIÓN: `git status` limpio. Si hay cambios sin commitear, PARA y pídeme que los
+   commitee o los guarde (`git stash`): el `git mv` masivo y el commit propio de la migración
+   arrastrarían trabajo ajeno, y si la sesión muere a medias el árbol quedaría medio migrado sin
+   forma limpia de volver.
+
 1. LEER EL ESTADO (solo lectura). `CLAUDE.md`: ¿hay bloque JCC?, ¿qué versión declara (línea
    `Bloque JCC vX.Y`; ausente = pre-v1.5)?, ¿qué dice "Fase actual"?, ¿hay `### Backlog` y reglas
-   propias del proyecto que deben sobrevivir? Contenedor: ¿`docs/cambios/`, `docs/`, raíz,
+   propias del proyecto que deben sobrevivir?, ¿hay sección `## Reglas operativas (INVIOLABLES)`? Contenedor: ¿`docs/cambios/`, `docs/`, raíz,
    `jccdocs/`? Work items: cuáles hay, cuáles están ACTIVOS (Fase actual + índice global + `git
    log`) y cuáles cerrados; cuáles son cambios planos (→ Feature), programas (→ Epic) y ciclos
    (→ `feature-NN_`). Punteros: qué enlaces cruzan la frontera del contenedor (desde `CLAUDE.md`,
@@ -45,7 +50,9 @@ señálalo y sigue.
    Epic; Feature = carpeta plana sin `handoffs/`; Epic = `handoffs/` único en su raíz; nombres que
    empiezan por letra reservados para estructura; portada mínima en la raíz y mapa en
    `jccdocs/README.md`; `anexos/` para lo no metodológico; bloque JCC v1.5 con línea de versión,
-   detección de command, dos lectores y copiloto con los 10 commands; `.gitignore` de medios.
+   detección de command, lectores y copiloto con los 10 commands; sección `## Reglas operativas
+   (INVIOLABLES)` con sus líneas fijas (conectores MCP, lectura acotada, política de push;
+   confidencialidad si es de cliente); índice global con columna Merge/PR; `.gitignore` de medios.
 
 3. PLAN DE MIGRACIÓN (receta P2: subárbol completo). Preséntamelo como tabla y espera mi visto
    bueno; nada se ejecuta antes:
@@ -59,12 +66,16 @@ señálalo y sigue.
      índice global y los que, desde dentro del contenedor, apuntaban fuera). Los enlaces internos
      relativos siguen valiendo por construcción; verifícalo, no lo supongas.
    - QUÉ SE REESCRIBE: la sección `## Metodología (JCC)` de `CLAUDE.md` con la plantilla v1.5, con
-     EDICIÓN DIRIGIDA — solo esa sección; conserva el contenido actual de "Fase actual" (repuntado),
-     el `### Backlog` y toda regla propia del proyecto. La línea `Bloque JCC v1.5` la escribes tú,
-     atómicamente, en ese mismo cambio.
-   - QUÉ SE CREA si falta: `jccdocs/README.md` (mapa; si el proyecto no tenía índice global,
-     constrúyelo desde los work items reales), portada mínima, `anexos/` (con lo que salga de
-     `docs/` que no sea metodología, con mi visto bueno pieza a pieza), `.gitignore` de medios.
+     EDICIÓN DIRIGIDA — solo esa sección; conserva el contenido actual de "Fase actual" (repuntado)
+     y el `### Backlog`. Las reglas propias del proyecto NO las decides tú: lista en la tabla CADA
+     línea de la sección actual que no esté en la plantilla y pregúntame, una a una, si se conserva
+     (y dónde: en el bloque, en Reglas operativas, en otra sección de CLAUDE.md) o se retira. La
+     línea `Bloque JCC v1.5` la escribes tú, atómicamente, en ese mismo cambio.
+   - QUÉ SE CREA si falta: la sección `## Reglas operativas (INVIOLABLES)` (pregúntame las
+     respuestas: conectores MCP, rutas externas, política de push, ¿cliente?), `jccdocs/README.md`
+     (mapa, con la columna Merge/PR; si el proyecto no tenía índice global, constrúyelo desde los
+     work items reales), portada mínima, `anexos/` (con lo que salga de `docs/` que no sea
+     metodología, con mi visto bueno pieza a pieza), `.gitignore` de medios.
    - LO AMBIGUO (¿esto se relee o se ejecuta?, ¿este cambio está activo o cerrado?, ¿este
      `docs/` es material o metodología?) va a la tabla como pregunta, no como decisión tuya.
 
@@ -74,7 +85,11 @@ señálalo y sigue.
 
 5. VERIFICAR Y CERRAR: comprueba que todos los enlaces relativos de `CLAUDE.md`, la portada,
    `jccdocs/README.md` y los READMEs de los work items activos resuelven a fichero existente
-   (lístame los rotos, si los hay, y arréglalos antes de commitear); que `git status` solo muestra
+   (lístame los rotos, si los hay, y arréglalos antes de commitear). Los enlaces desde FOTOS
+   (HANDOFF, REVIEW, BRIEF, AUDIT) hacia lo renombrado quedan rotos por diseño — las fotos no se
+   editan —: lístalos en el informe y en la cabecera de `jccdocs/README.md` como "rotos
+   aceptados" (con el nombre nuevo al lado), para que `jcc-audit` los trate como informativo.
+   Comprueba que `git status` solo muestra
    renombrados y los ficheros previstos; que la línea `Bloque JCC v1.5` está. Un commit propio
    ("jcc-upgrade: migración a JCC v1.5 — <qué se movió>"). SIN push: recuérdame la política de
    push del proyecto y déjalo en mis manos. Añade en la cabecera de `jccdocs/README.md` una línea
@@ -92,4 +107,5 @@ sin bloque JCC en absoluto → eso no es upgrade, es día-0: ofrece `/jcc-start`
 
 Si el argumento dice "solo plan", para tras el paso 3. Si dice "solo bloque", limita el plan a la
 sección de `CLAUDE.md` (y su línea de versión). Si es una ruta a otro proyecto, trabaja allí con
-las mismas reglas.
+las mismas reglas (la lectura acotada lo permite porque la ruta te la doy yo; si este proyecto es
+de cliente y la ruta parece de OTRO cliente, párate y pregúntame).

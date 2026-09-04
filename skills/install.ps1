@@ -98,7 +98,12 @@ foreach ($old in $RenamedSkills) {
     if (Test-Path $oldDir) {
         if ($Check) { $renamed += "${old}: skill renombrada en v1.5, copia viva obsoleta en $LiveDir (la retiraria el install)" }
         else {
-            Remove-Item $oldDir -Recurse -Force -Confirm:$false
+            # Si la carpeta es un enlace (junction/symlink), se retira solo el enlace, nunca su destino.
+            if ((Get-Item $oldDir -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) {
+                [IO.Directory]::Delete($oldDir)
+            } else {
+                Remove-Item $oldDir -Recurse -Force -Confirm:$false
+            }
             $renamed += $old
         }
     }

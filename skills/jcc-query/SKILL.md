@@ -34,8 +34,10 @@ pregunta lo pide), siguiendo los mismos punteros. Consultas típicas que debes r
   redactar, cierra conmigo tono, audiencia y nivel de detalle (AskUserQuestion sirve para
   cerrar estos parámetros).
 
-El alcance por defecto es este proyecto: el work item activo, uno cerrado o todos. Si te doy una
-ruta a otro proyecto, consulta allí con los mismos punteros.
+El alcance por defecto es este proyecto: los work items activos, uno cerrado o todos. Si te doy una
+ruta a otro proyecto, consulta allí con los mismos punteros (la regla de lectura acotada del
+proyecto lo permite porque la ruta te la doy yo explícitamente; si este proyecto es de cliente y
+la ruta parece de OTRO cliente, párate y pregúntame antes de leer).
 
 ANCLAJE A LA REALIDAD: lo que afirmes sale de los documentos y se cita (documento concreto, o
 `fichero:línea` si entras al código). Si la documentación se contradice entre sí, o con el
@@ -44,7 +46,8 @@ de `/jcc-audit`, no tuya — tú no corriges nada).
 
 MATERIALIZACIÓN (la única escritura permitida, SOLO si te la pido explícitamente): si la vista
 debe viajar (reunión, cliente, compañero), escríbela como `BRIEF_yyyymmdd_<slug>.md` en la
-carpeta del work item consultado y añade su fila al README de ese work item. Si la vista abarca
+carpeta del work item consultado y añade su fila al README de ese work item (créalo si no
+existe: el BRIEF es un documento que no es DESIGN ni SPEC, regla única del doc). Si la vista abarca
 varios work items o el proyecto entero, proponme la ubicación (normalmente la carpeta del Epic o
 Feature más pertinente) y ciérrala conmigo antes de escribir. Es una FOTO: no se mantiene ni se
 reedita; si hace falta otra, se regenera desde la verdad.

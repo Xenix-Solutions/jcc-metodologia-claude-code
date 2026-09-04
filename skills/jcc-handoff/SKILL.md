@@ -30,8 +30,10 @@ MODELO (tres hogares + índice global + backlog):
    - Ubicación: **Feature** → `HANDOFF_yyyymmdd_<slug>.md` EN LA CARPETA del Feature, junto al
      DESIGN/SPEC — **sin subcarpeta `handoffs/`**, aunque sean varias sesiones (se fechan y
      conviven). **Epic** → el ÚNICO `handoffs/` en la RAÍZ del Epic (nunca por Feature), aunque
-     la sesión se centrara en un `feature-NN_` concreto. Los handoffs existentes con nombres
-     anteriores no se renombran.
+     la sesión se centrara en un `feature-NN_` concreto. **Analysis standalone** → en su carpeta
+     `yyyymmdd_analysis_<slug>/`. Los handoffs existentes con nombres anteriores no se renombran.
+     El `<slug>` del handoff es el TEMA de la sesión, no el de la carpeta; dos cierres el mismo
+     día llevan slugs distintos.
    - Contenido: cabecera **"Estado metodológico"** (fase actual · siguiente command · restricciones
      activas que no se pueden saltar · evidencia del estado: qué artefactos existen y en qué estado)
      + qué se hizo + qué se verificó CON EVIDENCIA REAL (no "hecho" a secas) + **qué pasó en qué
@@ -75,19 +77,26 @@ MODELO (tres hogares + índice global + backlog):
    (o créalo ahora con la plantilla del doc, con mi visto bueno).
 
 5. ÍNDICES. Actualiza el README del work item (documentos creados esta sesión) y el índice global
-   `jccdocs/README.md` (estado del work item: activo/cerrado, Y el estado de merge/PR si lo hay —
-   si el merge queda para después del cierre, el índice lo dice y la reconciliación de la próxima
-   sesión lo pondrá al día). Créalos si no existen y el trabajo lo pide (Epic, o Feature que ya
-   pasa de ~4 documentos).
+   `jccdocs/README.md`: columna Estado (activo | cerrado; CERRADO = veredicto limpio registrado
+   en un REVIEW y merge/PR resuelto, o decisión mía explícita anotada en este handoff — si es por
+   decisión, la fila cita el handoff) y columna Merge/PR con valor cerrado (`—` sin PR previsto ·
+   `PR #n abierto` · `mergeado yyyy-mm-dd` · `commit directo`); si el merge queda para después
+   del cierre, el índice lo dice y la reconciliación de la próxima sesión lo pondrá al día.
+   Créalos si no existen: el README del work item es obligatorio desde que hay un HANDOFF (regla
+   única del doc), y el índice global siempre.
 
 6. BACKLOG, MEMORIA, `/usage` Y PENDIENTES. Los pendientes DURABLES (decidido no-ahora:
    endurecimientos, deudas conscientes, decisiones diferidas) van al `### Backlog` de CLAUDE.md,
    una línea cada uno, PODANDO a la vez lo hecho o caducado (su historia ya vive en los handoffs);
    créalo si no existe y hay pendientes. Los pendientes de simple continuidad van al handoff, no al
-   Backlog. Pídeme que ejecute `/usage` y anota en el handoff una línea con los números (ritual de
-   la metodología: es la telemetría con la que se deciden las palancas de coste). Recuérdame
-   actualizar tu memoria del proyecto y lo pendiente (commit/push según la política del proyecto,
-   notas). En la memoria del proyecto, deja (si no está ya) el apunte-RECETA de arranque — una
+   Backlog. Pídeme que ejecute `/usage` y que te pegue la salida (la ve el operador, no tú) y anota en el handoff una línea con los números (ritual de la metodología: es la telemetría con
+   la que se deciden las palancas de coste). Propón el COMMIT del handoff y de los hogares AHORA
+   (sin push salvo que la política de push escrita en las Reglas operativas lo permita): sin
+   commit, quien clone no verá ni el handoff ni la nueva "Fase actual". Recuérdame actualizar tu
+   memoria del proyecto — la memoria automática de Claude Code (ficheros por proyecto bajo
+   `~/.claude/projects/`, cargados al abrir sesión), NO un fichero del repo ni CLAUDE.md; si tu
+   sesión no la tiene, omite este punto — y lo pendiente (notas). En la memoria del proyecto,
+   deja (si no está ya) el apunte-RECETA de arranque — una
    receta estática, no una foto del estado: "al arrancar, sigue los punteros: índice global →
    README del work item activo → último handoff, y contrasta con git log". Una foto caduca si una
    sesión muere sin handoff; la receta no. Marca las decisiones tomadas "en caliente" al final para
